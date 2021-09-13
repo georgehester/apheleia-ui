@@ -1,0 +1,129 @@
+// #region Googlefonts Roboto Import
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+// #endregion
+
+// #region Type Default Class
+
+.aph-type-all {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 70%;
+    white-space: normal;
+    word-wrap: normal;
+    margin: 0;
+    color: $color-text-05;
+
+    &::selection {
+        background: $color-blue-50;
+        color: $color-text-01;
+    }
+}
+
+// #endregion
+
+// #region Type Sizes
+
+.aph-type-12 {
+    @extend .aph-type-all;
+
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.aph-type-14 {
+    @extend .aph-type-all;
+
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.aph-type-16 {
+    @extend .aph-type-all;
+
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.aph-type-18 {
+    @extend .aph-type-all;
+
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.aph-type-20 {
+    @extend .aph-type-all;
+
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.aph-type-24 {
+    @extend .aph-type-all;
+
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.aph-type-28 {
+    @extend .aph-type-all;
+
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.aph-type-32 {
+    @extend .aph-type-all;
+
+    font-size: 12px;
+    line-height: 16px;
+}
+
+// #endregion
+
+// #region Type Styles
+
+.aph-type-body-short-01 {
+    @extend .aph-type-all;
+
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+    font-weight: 500;
+}
+
+.aph-type-body-short-02 {
+    @extend .aph-type-all;
+
+    font-size: 16px ;
+    line-height: 20px;
+    letter-spacing: 0px;
+    font-weight: 500;
+}
+
+.aph-type-body-long-01 {
+    @extend .aph-type-all;
+
+    font-size: 14px ;
+    line-height: 20px;
+    letter-spacing: 0.16px;
+    font-weight: 500;
+}
+
+.aph-type-body-long-02 {
+    @extend .aph-type-all;
+
+    font-size: 16px ;
+    line-height: 22px;
+    letter-spacing: 0px;
+    font-weight: 500;
+}
+
+// #endregion
+
+.aph-type--01 {
+    color: red;
+}

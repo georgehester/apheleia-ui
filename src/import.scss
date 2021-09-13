@@ -1,0 +1,37 @@
+// #region Import Colors
+
+@import "./components/color/scss/color.scss";
+
+// #endregion
+
+// #region Import Components
+
+@import "./components/typography/scss/typography.scss";
+@import "./components/icon/scss/icon.scss";
+@import "./components/button/scss/button.scss";
+
+// #endregion
+
+// #region Default Css
+
+html {
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: $color-light-ui-background;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: $color-dark-ui-background;
+    }
+}
+
+// #endregion

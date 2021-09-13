@@ -1,0 +1,16 @@
+// #region Button Size
+
+.aph-button-size-small {
+    height: 32px;
+
+    aph-icon {
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+
+    span {
+        align-self: center;
+    }
+}
+
+// #endregion

@@ -1,0 +1,105 @@
+// #region Fix Button Style For Browsers
+
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+// #endregion
+
+// #region Basic Webcomponent Properties
+
+aph-button {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+}
+
+// #endregion
+
+// #region Button Class
+
+.aph-button {
+    display: flex;
+    -webkit-appearance: none;
+    position: relative;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// #endregion
+
+// #region Button Text
+
+.aph-button-text {
+    @extend .aph-type-body-short-01;
+
+    text-align: start;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+// #endregion
+
+// #region Button Loader
+
+.aph-button-loader {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: aph-button-loader-animation 1s infinite ease-in-out;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@keyframes aph-button-loader-animation {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+// #endregion
+
+// #region Button Sizes
+
+@import "./sizes/small.scss";
+@import "./sizes/medium.scss";
+@import "./sizes/large.scss";
+@import "./sizes/extralarge.scss";
+
+// #endregion
+
+// #region Button Types
+
+@import "./types/primary.scss";
+
+// #endregion

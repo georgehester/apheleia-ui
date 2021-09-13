@@ -1,0 +1,21 @@
+# Exclude node modules 
+node_modules
+
+# Exclude vscode config
+.vscode
+.vs
+
+# Exclude environment variables
+.env
+
+# Exclude dump files 
+dump.txt
+
+# Exclude build folder
+build
+
+# Exclude todo
+.todo
+
+# Exclude package lock
+package-lock.json
