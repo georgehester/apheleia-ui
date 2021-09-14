@@ -1,3 +1,6 @@
+/*
+    Supported icons
+*/
 enum ApheleiaSupportedIcon
 {
     null,
@@ -5,6 +8,9 @@ enum ApheleiaSupportedIcon
     chevronRight
 };
 
+/*
+    Supported icons code
+*/
 enum ApheleiaSupportedIconCode 
 {
     '',
@@ -22,17 +28,22 @@ class ApheleiaIcon extends HTMLElement
     */
     getAttributes(): void
     {
-        this.setAttributes(this.getAttribute('name'), this.getAttribute('size'));
+        if (!!ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')])
+        {
+            this.setAttributes(ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')], this.getAttribute('size'));
+        }
+        else
+        {
+            this.setAttributes(ApheleiaSupportedIcon.null, this.getAttribute('size'));
+        };
     };
 
     /*
         Class set attributes function
     */
-    setAttributes(iconName: string | null, iconSize: string | null): void
+    setAttributes(iconName: ApheleiaSupportedIcon | null, iconSize: string | null): void
     {
-        // DEBUG
-        console.table({ 'iconName': iconName, 'iconSize': iconSize });
-        // DEBUG
+        console.log({"iconName": iconName, "iconSize": iconSize});
 
         if (!iconSize || !Number(iconSize))
         {
@@ -43,20 +54,14 @@ class ApheleiaIcon extends HTMLElement
             this.iconSize = `${iconSize}px`;
         };
 
-        let typedName: string = iconName || 'null';
-
-        if (!!ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>typedName])
-        {
-            this.iconName = ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>typedName];
-        }
-        else 
+        if (!iconName)
         {
             this.iconName = ApheleiaSupportedIcon.null;
+        }
+        else
+        {
+            this.iconName = iconName;
         };
-
-        // DEBUG
-        console.table({ 'iconName': this.iconName, 'iconSize': this.iconSize });
-        // DEBUG
     };
 
     /*

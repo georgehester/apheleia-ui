@@ -1,9 +1,21 @@
+/*
+    Make sure Apheleia Icon is preloaded
+*/
+/// <reference path="../../icon/ts/icon.ts" />
+
+/*
+    Button states
+*/
 enum ApheleiaButtonState
 {
     clicked,
-    default
+    default,
+    disabled
 };
 
+/*
+    Button sizes
+*/
 enum ApheleiaButtonSize
 {
     small,
@@ -12,6 +24,9 @@ enum ApheleiaButtonSize
     extraLarge
 };
 
+/*
+    Button types
+*/
 enum ApheleiaButtonType
 {
     primary,
@@ -23,6 +38,9 @@ enum ApheleiaButtonType
     grayGlass
 };
 
+/*
+    Class apheleia button
+*/
 class ApheleiaButton extends HTMLElement
 {
 
@@ -63,7 +81,11 @@ class ApheleiaButton extends HTMLElement
     {
         this.innerHTML = '';
 
-
+        let x: ApheleiaIcon = new ApheleiaIcon();
+        x.setAttributes(ApheleiaSupportedIcon.chevronRight, '16');
+        x.construct();
+    
+        this.appendChild(x);
     };
 
     buttonState: ApheleiaButtonState = ApheleiaButtonState.default;
@@ -94,7 +116,7 @@ class ApheleiaButton extends HTMLElement
     {
         super();
 
-
+        this.construct();
     };
 };
 

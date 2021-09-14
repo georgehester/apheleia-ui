@@ -52,6 +52,9 @@
     <div>
         <aph-icon id="test-icon" size="128" name="chevronLeft">
         </aph-icon>
+
+        <aph-button>
+        </aph-button>
     </div>
 </body>
 
@@ -60,7 +63,7 @@
 <script  src="../build/apheleia/build.js"></script>
 <script >
     //console.log(ApheleiaButton);
-    let button = new ApheleiaButton();
+    /*let button = new ApheleiaButton();
 
     console.log(ApheleiaButtonSize[button.buttonSize]);
 
@@ -68,10 +71,10 @@
 
     console.log(ApheleiaButtonSize[button.buttonSize]);
 
-    document.body.appendChild(button);
+    document.body.appendChild(button);*/
 
     let icon = document.getElementById('test-icon');
-    /*icon.setAttributes('chevronRight', '48');
-    icon.construct();*/
+    icon.setAttributes(ApheleiaSupportedIcon.chevronRight, '48');
+    icon.construct();
 
 </script>

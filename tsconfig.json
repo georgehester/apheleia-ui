@@ -23,7 +23,8 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         //"moduleResolution": "classic",
-        "allowUnreachableCode": false,
+        "allowUnreachableCode": false
+        //"reorderFiles": true
     },
     "include": [
         "./src/**/*.ts"
