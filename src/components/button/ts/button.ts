@@ -54,23 +54,108 @@ class ApheleiaButton extends HTMLElement
 
     };
 
-    setAttributes(buttonType: ApheleiaButtonType, buttonSize: ApheleiaButtonSize)
+    /*
+    type 
+    size
+    hasloader
+    autodisable
+    isdisabled
+    hasmargin
+    icon 
+    iconLeft
+    iconRight
+    text
+    */
+
+
+    /*
+        Class set attributes function
+    */
+    setAttributes(type?: ApheleiaButtonType, size?: ApheleiaButtonSize, text?: string, icon?: ApheleiaSupportedIcon, iconLeft?: ApheleiaSupportedIcon, iconRight?: ApheleiaSupportedIcon, hasLoader?: boolean, autoDisable?: boolean, hasmargin?: boolean)
     {
-        if (ApheleiaButtonType[buttonType] != undefined)
-        {
-            this.buttonType = buttonType;
-        } else
+        if (!type || !ApheleiaButtonType[type])
         {
             this.buttonType = ApheleiaButtonType.primary;
+        }
+        else
+        {
+            this.buttonType = type;
         };
 
-        if (ApheleiaButtonSize[buttonSize] != undefined)
-        {
-            this.buttonSize = buttonSize;
-        } else
+        if (!size || !ApheleiaButtonSize[size])
         {
             this.buttonSize = ApheleiaButtonSize.medium;
+        }
+        else
+        {
+            this.buttonSize = size;
         };
+
+        /* 
+
+        */
+        if (text)
+        {
+            this.buttonText = text;
+            this.buttonIcon = undefined;
+            this.buttonIconLeft = undefined;
+            this.buttonIconRight = undefined;
+        }
+        else if (icon)
+        {
+            this.buttonText = undefined;
+            this.buttonIcon = icon;
+            this.buttonIconLeft = undefined;
+            this.buttonIconRight = undefined;
+        }
+        else if (iconLeft)
+        {
+            this.buttonText = undefined;
+            this.buttonIcon = undefined;
+            this.buttonIconLeft = iconLeft;
+            this.buttonIconRight = undefined;
+        }
+        else if (iconRight)
+        {
+            this.buttonText = undefined;
+            this.buttonIcon = undefined;
+            this.buttonIconLeft = undefined;
+            this.buttonIconRight = iconRight;
+        }
+        else 
+        {
+            this.buttonText = undefined;
+            this.buttonIcon = undefined;
+            this.buttonIconLeft = undefined;
+            this.buttonIconRight = undefined;
+        };
+
+        if (hasLoader != undefined)
+        {
+            this.buttonHasLoader = hasLoader;
+        }
+        else 
+        {
+            this.buttonHasLoader = true;
+        };
+
+        if (autoDisable != undefined)
+        {
+            this.buttonAutoDisable = autoDisable;
+        }
+        else
+        {
+            this.buttonAutoDisable = true;
+        };
+
+        if(hasmargin)
+
+        //!!ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')]
+
+
+
+
+
 
 
 
@@ -84,7 +169,7 @@ class ApheleiaButton extends HTMLElement
         let x: ApheleiaIcon = new ApheleiaIcon();
         x.setAttributes(ApheleiaSupportedIcon.chevronRight, '16');
         x.construct();
-    
+
         this.appendChild(x);
     };
 
@@ -97,6 +182,11 @@ class ApheleiaButton extends HTMLElement
     buttonType: ApheleiaButtonType = ApheleiaButtonType.primary;
     buttonSize: ApheleiaButtonSize = ApheleiaButtonSize.medium;
     buttonText?: string;
+    buttonIcon?: ApheleiaSupportedIcon;
+    buttonIconLeft?: ApheleiaSupportedIcon;
+    buttonIconRight?: ApheleiaSupportedIcon;
+    buttonHasLoader: boolean = true;
+    buttonAutoDisable: boolean = true;
 
     /*
         Class elements
@@ -115,7 +205,7 @@ class ApheleiaButton extends HTMLElement
     constructor()
     {
         super();
-
+        this.getAttributes();
         this.construct();
     };
 };
