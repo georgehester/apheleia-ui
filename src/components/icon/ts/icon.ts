@@ -54,7 +54,7 @@ class ApheleiaIcon extends HTMLElement
             this.iconSize = `${iconSize}px`;
         };
 
-        if (!iconName)
+        if (!iconName || !ApheleiaSupportedIcon[iconName])
         {
             this.iconName = ApheleiaSupportedIcon.null;
         }
@@ -62,6 +62,8 @@ class ApheleiaIcon extends HTMLElement
         {
             this.iconName = iconName;
         };
+
+        console.log(this.iconSize, this.iconName);
     };
 
     /*

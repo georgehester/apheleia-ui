@@ -49,119 +49,99 @@ class ApheleiaButton extends HTMLElement
         this.buttonState = state;
     };
 
+    /*
+        Class get attributes from html function
+    */
     getAttributes(): void
     {
-
+        this.setAttributes(
+            ApheleiaButtonType[<keyof typeof ApheleiaButtonType>this.getAttribute('type')],
+            ApheleiaButtonSize[<keyof typeof ApheleiaButtonSize>this.getAttribute('size')],
+            this.getAttribute('text') || undefined,
+            ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('icon')] || undefined,
+            ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('iconleft')] || undefined,
+            ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('iconright')] || undefined,
+            this.hasAttribute('noloader') ? false : true,
+            this.hasAttribute('nodisable') ? false : true,
+            this.hasAttribute('nomargin') ? false : true,
+            this.hasAttribute('fullwidth'),
+            this.hasAttribute('disabled')
+        );
     };
-
-    /*
-    type 
-    size
-    hasloader
-    autodisable
-    isdisabled
-    hasmargin
-    icon 
-    iconLeft
-    iconRight
-    text
-    */
-
 
     /*
         Class set attributes function
     */
-    setAttributes(type?: ApheleiaButtonType, size?: ApheleiaButtonSize, text?: string, icon?: ApheleiaSupportedIcon, iconLeft?: ApheleiaSupportedIcon, iconRight?: ApheleiaSupportedIcon, hasLoader?: boolean, autoDisable?: boolean, hasmargin?: boolean)
+    setAttributes(type?: ApheleiaButtonType, size?: ApheleiaButtonSize, text?: string, icon?: ApheleiaSupportedIcon, iconLeft?: ApheleiaSupportedIcon, iconRight?: ApheleiaSupportedIcon, hasLoader?: boolean, autoDisable?: boolean, hasMargin?: boolean, isFullWidth?: boolean, isDisabled?: boolean): void
     {
-        if (!type || !ApheleiaButtonType[type])
-        {
-            this.buttonType = ApheleiaButtonType.primary;
-        }
-        else
+        this.buttonType = ApheleiaButtonType.primary;
+        this.buttonSize = ApheleiaButtonSize.medium;
+        this.buttonText = undefined;
+        this.buttonIcon = undefined;
+        this.buttonIconLeft = undefined;
+        this.buttonIconRight = undefined;
+        this.buttonHasLoader = true;
+        this.buttonAutoDisable = true;
+        this.buttonHasMargin = true;
+        this.buttonIsFullWidth = false;
+        this.buttonIsDisabled = false;
+
+        if (type && ApheleiaButtonType[type])
         {
             this.buttonType = type;
         };
 
-        if (!size || !ApheleiaButtonSize[size])
-        {
-            this.buttonSize = ApheleiaButtonSize.medium;
-        }
-        else
+        if (size && ApheleiaButtonSize[size])
         {
             this.buttonSize = size;
         };
 
-        /* 
-
-        */
         if (text)
         {
             this.buttonText = text;
-            this.buttonIcon = undefined;
-            this.buttonIconLeft = undefined;
-            this.buttonIconRight = undefined;
         }
-        else if (icon)
+        else if (icon && ApheleiaSupportedIcon[icon])
         {
-            this.buttonText = undefined;
             this.buttonIcon = icon;
-            this.buttonIconLeft = undefined;
-            this.buttonIconRight = undefined;
         }
-        else if (iconLeft)
+        else if (iconLeft && ApheleiaSupportedIcon[iconLeft])
         {
-            this.buttonText = undefined;
-            this.buttonIcon = undefined;
             this.buttonIconLeft = iconLeft;
-            this.buttonIconRight = undefined;
         }
-        else if (iconRight)
+        else if (iconRight && ApheleiaSupportedIcon[iconRight])
         {
-            this.buttonText = undefined;
-            this.buttonIcon = undefined;
-            this.buttonIconLeft = undefined;
             this.buttonIconRight = iconRight;
-        }
-        else 
-        {
-            this.buttonText = undefined;
-            this.buttonIcon = undefined;
-            this.buttonIconLeft = undefined;
-            this.buttonIconRight = undefined;
         };
 
         if (hasLoader != undefined)
         {
             this.buttonHasLoader = hasLoader;
-        }
-        else 
-        {
-            this.buttonHasLoader = true;
         };
 
         if (autoDisable != undefined)
         {
             this.buttonAutoDisable = autoDisable;
-        }
-        else
-        {
-            this.buttonAutoDisable = true;
         };
 
-        if(hasmargin)
+        if (hasMargin != undefined)
+        {
+            this.buttonHasMargin = hasMargin;
+        };
 
-        //!!ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')]
+        if (isFullWidth != undefined)
+        {
+            this.buttonIsFullWidth = isFullWidth;
+        };
 
-
-
-
-
-
-
-
-
+        if (isDisabled != undefined)
+        {
+            this.buttonIsDisabled = isDisabled;
+        };
     };
 
+    /*
+        Class constructor function
+    */
     construct(): void
     {
         this.innerHTML = '';
@@ -187,6 +167,9 @@ class ApheleiaButton extends HTMLElement
     buttonIconRight?: ApheleiaSupportedIcon;
     buttonHasLoader: boolean = true;
     buttonAutoDisable: boolean = true;
+    buttonHasMargin: boolean = true;
+    buttonIsFullWidth: boolean = false;
+    buttonIsDisabled: boolean = false;
 
     /*
         Class elements
