@@ -146,11 +146,34 @@ class ApheleiaButton extends HTMLElement
     {
         this.innerHTML = '';
 
-        let x: ApheleiaIcon = new ApheleiaIcon();
-        x.setAttributes(ApheleiaSupportedIcon.chevronRight, '16');
-        x.construct();
+        this.button = document.createElement('button');
+        this.button.classList.add('aph-button');
+        this.button.classList.add(`aph-button-size-${ApheleiaButtonSize[this.buttonSize]}`);
+        this.button.classList.add(`aph-button-type-${ApheleiaButtonType[this.buttonType]}`);
 
-        this.appendChild(x);
+        if (this.buttonText)
+        {
+            this.text = document.createElement('span');
+            this.text.className = 'aph-button-text';
+            this.text.style.marginLeft = '6px';
+            this.text.style.marginRight = '6px';
+
+            this.text.innerHTML = this.buttonText;
+            this.button.appendChild(this.text);
+
+            this.text.style.opacity = '1';
+        }
+
+        if (this.buttonHasLoader)
+        {
+            this.loader = document.createElement('div');
+            this.loader.className = 'aph-button-loader';
+        };
+
+        this.appendChild(this.button);
+        //this.shadow = this.attachShadow({ mode: 'open' });
+        //this.shadow.appendChild(this.button);
+
     };
 
     buttonState: ApheleiaButtonState = ApheleiaButtonState.default;
@@ -181,6 +204,7 @@ class ApheleiaButton extends HTMLElement
     icon?: ApheleiaIcon;
     iconLeft?: ApheleiaIcon;
     iconRight?: ApheleiaIcon;
+    shadow?: ShadowRoot;
 
     /*
         Class constructor
