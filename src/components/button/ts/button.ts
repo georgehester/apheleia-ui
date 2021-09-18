@@ -21,7 +21,8 @@ enum ApheleiaButtonSize
     small,
     medium,
     large,
-    extraLarge
+    extraLarge,
+    custom
 };
 
 /*
@@ -46,7 +47,23 @@ class ApheleiaButton extends HTMLElement
 
     updateState(state: ApheleiaButtonState): void 
     {
-        this.buttonState = state;
+        if (state == ApheleiaButtonState.clicked)
+        {
+            if (this.state != ApheleiaButtonState.disabled)
+            {
+
+            };
+        }
+        else if (state == ApheleiaButtonState.default)
+        {
+
+        }
+        else if (state == ApheleiaButtonState.disabled)
+        {
+
+        };
+
+        this.state = state;
     };
 
     /*
@@ -146,38 +163,157 @@ class ApheleiaButton extends HTMLElement
     {
         this.innerHTML = '';
 
+        /*
+
+        */
         this.button = document.createElement('button');
         this.button.classList.add('aph-button');
-        this.button.classList.add(`aph-button-size-${ApheleiaButtonSize[this.buttonSize]}`);
+
+        /*
+
+        */
         this.button.classList.add(`aph-button-type-${ApheleiaButtonType[this.buttonType]}`);
 
-        if (this.buttonText)
-        {
-            this.text = document.createElement('span');
-            this.text.className = 'aph-button-text';
-            this.text.style.marginLeft = '6px';
-            this.text.style.marginRight = '6px';
+        /*
 
-            this.text.innerHTML = this.buttonText;
-            this.button.appendChild(this.text);
-
-            this.text.style.opacity = '1';
-        }
-
+        */
         if (this.buttonHasLoader)
         {
             this.loader = document.createElement('div');
-            this.loader.className = 'aph-button-loader';
+            this.loader.classList.add('aph-button-loader');
+            this.button.appendChild(this.loader);
         };
 
+        /*
+
+        */
+        if (this.buttonSize != ApheleiaButtonSize.custom)
+        {
+            this.button.classList.add(`aph-button-size-${ApheleiaButtonSize[this.buttonSize]}`);
+        };
+
+        /*
+
+        */
+        if (this.buttonIsFullWidth)
+        {
+            this.button.style.width = '100%';
+        };
+
+        /*
+
+        */
+        if (this.buttonIconLeft && !this.buttonIcon)
+        {
+            this.iconLeft = new ApheleiaIcon();
+            this.iconLeft.setAttributes(this.buttonIconLeft, '24');
+            this.iconLeft.construct();
+            this.iconLeft.style.marginRight = '6px';
+            this.iconLeft.style.marginLeft = '8px';
+
+            this.button.appendChild(this.iconLeft);
+        };
+
+        /*
+
+        */
+        if (this.buttonText && !this.buttonIcon)
+        {
+            this.text = document.createElement('span');
+            this.text.classList.add('aph-button-text');
+            this.text.innerHTML = this.buttonText;
+
+            this.button.appendChild(this.text);
+
+            /*
+            */
+            this.text.style.opacity = '1';
+
+            if (this.buttonHasMargin)
+            {
+                this.text.style.marginLeft = '16px';
+                this.text.style.marginRight = '80px';
+            }
+            else
+            {
+                if (this.buttonIconLeft && this.buttonIconRight)
+                {
+                    this.text.style.marginLeft = '0px';
+                    this.text.style.marginRight = '0px';
+                }
+                else if (this.buttonIconLeft)
+                {
+                    this.text.style.marginLeft = '0px';
+                    this.text.style.marginRight = '16px';
+                }
+                else if (this.buttonIconRight)
+                {
+                    this.text.style.marginLeft = '16px';
+                    this.text.style.marginRight = '16px';
+                }
+                else
+                {
+                    this.text.style.marginLeft = '16px';
+                    this.text.style.marginRight = '16px';
+                };
+            };
+        }
+
+        if (this.buttonIcon && !this.buttonText)
+        {
+            this.icon = new ApheleiaIcon();
+            this.icon.setAttributes(this.buttonIcon, '24');
+            this.icon.construct();
+            this.icon.style.marginRight = '3px';
+            this.icon.style.marginLeft = '3px';
+
+            this.button.appendChild(this.icon);
+        };
+
+        /*
+
+        */
+        if (this.buttonIconRight && !this.buttonIcon)
+        {
+            this.iconRight = new ApheleiaIcon();
+            this.iconRight.setAttributes(this.buttonIconRight, '24');
+            this.iconRight.construct();
+            this.iconRight.style.marginRight = '6px';
+            this.iconRight.style.marginLeft = '8px';
+
+            this.button.appendChild(this.iconRight);
+        };
+
+        /*
+
+        */
+        if (this.buttonIsDisabled)
+        {
+            this.button.disabled = true;
+            this.state = ApheleiaButtonState.disabled;
+        };
+
+        /*
+
+        */
+        if (this.buttonAutoDisable || this.buttonHasLoader)
+        {
+            this.button.addEventListener('click', () =>
+            {
+
+            });
+        };
+
+        /*
+
+        */
         this.appendChild(this.button);
-        //this.shadow = this.attachShadow({ mode: 'open' });
-        //this.shadow.appendChild(this.button);
 
+        if (!this.buttonIsDisabled)
+        {
+            this.updateState(ApheleiaButtonState.default);
+        };
     };
-
-    buttonState: ApheleiaButtonState = ApheleiaButtonState.default;
-
 
     /*
         Class attributes
@@ -204,7 +340,7 @@ class ApheleiaButton extends HTMLElement
     icon?: ApheleiaIcon;
     iconLeft?: ApheleiaIcon;
     iconRight?: ApheleiaIcon;
-    shadow?: ShadowRoot;
+    state: ApheleiaButtonState = ApheleiaButtonState.default;
 
     /*
         Class constructor
