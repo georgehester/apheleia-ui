@@ -19,6 +19,7 @@ aph-button {
 
 // #region Button Class
 
+
 .aph-button {
     display: flex;
     -webkit-appearance: none;
@@ -33,6 +34,17 @@ aph-button {
     align-items: center;
     justify-content: space-between;
 }
+
+.aph-button-icon {
+    opacity: 0;
+}
+
+.aph-button-icon-active {
+    opacity: 1;
+}
+
+
+
 
 // #endregion
 
@@ -53,12 +65,15 @@ aph-button {
     user-select: none;
 }
 
+.aph-button-text-active {
+    opacity: 1;
+}
+
 // #endregion
 
 // #region Button Loader
 
 .aph-button-loader {
-
     position: absolute;
     top: 50%;
     left: 50%;
@@ -76,6 +91,10 @@ aph-button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.aph-button-loader-active {
+    opacity: 1;
 }
 
 @keyframes aph-button-loader-animation {
