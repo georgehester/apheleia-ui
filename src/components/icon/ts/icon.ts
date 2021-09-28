@@ -28,42 +28,29 @@ class ApheleiaIcon extends HTMLElement
     */
     getAttributes(): void
     {
-        if (!!ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')])
-        {
-            this.setAttributes(ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')], this.getAttribute('size'));
-        }
-        else
-        {
-            this.setAttributes(ApheleiaSupportedIcon.null, this.getAttribute('size'));
-        };
+        this.setAttributes(
+            ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('name')] || undefined,
+            Number(this.getAttribute('size')) || undefined
+        );
     };
 
     /*
         Class set attributes function
     */
-    setAttributes(iconName: ApheleiaSupportedIcon | null, iconSize: string | null): void
+    setAttributes(iconName?: ApheleiaSupportedIcon, iconSize?: number): void
     {
-        console.log({"iconName": iconName, "iconSize": iconSize});
+        this.iconName = ApheleiaSupportedIcon.null;
+        this.iconSize = 16;
 
-        if (!iconSize || !Number(iconSize))
-        {
-            this.iconSize = '16px';
-        }
-        else
-        {
-            this.iconSize = `${iconSize}px`;
-        };
-
-        if (!iconName || !ApheleiaSupportedIcon[iconName])
-        {
-            this.iconName = ApheleiaSupportedIcon.null;
-        }
-        else
+        if (iconName && ApheleiaSupportedIcon[iconName])
         {
             this.iconName = iconName;
         };
 
-        console.log(this.iconSize, this.iconName);
+        if (iconSize && Number(iconSize))
+        {
+            this.iconSize = iconSize;
+        };
     };
 
     /*
@@ -71,19 +58,16 @@ class ApheleiaIcon extends HTMLElement
     */
     construct(): void
     {
-        if (this.iconName != null)
-        {
-            this.innerHTML = ApheleiaSupportedIconCode[this.iconName];
-            this.style.width = this.iconSize;
-            this.style.height = this.iconSize;
-        };
+        this.innerHTML = ApheleiaSupportedIconCode[this.iconName];
+        this.style.width = `${this.iconSize}px`;
+        this.style.height = `${this.iconSize}px`;
     };
 
     /*
         Class attributes
     */
     iconName: ApheleiaSupportedIcon = ApheleiaSupportedIcon.null;
-    iconSize: string = '16px';
+    iconSize: number = 16;
 
     /*
         Class elements

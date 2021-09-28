@@ -21,9 +21,21 @@ enum ApheleiaButtonSize
     small,
     medium,
     large,
-    extraLarge,
+    extralarge,
     custom
 };
+
+/*
+    Button sizes margins
+*/
+const ApheleiaButtonSizeIconMargin: number[] =
+    [
+        3,
+        7,
+        11,
+        19,
+        7
+    ];
 
 /*
     Button types
@@ -47,20 +59,57 @@ class ApheleiaButton extends HTMLElement
 
     updateState(state: ApheleiaButtonState): void 
     {
-        if (state == ApheleiaButtonState.clicked)
+        if (!this.button)
         {
-            if (this.state != ApheleiaButtonState.disabled)
+            return;
+        };
+
+        if (this.buttonAutoDisable)
+        {
+            if (state == ApheleiaButtonState.clicked || state == ApheleiaButtonState.disabled)
             {
-
+                this.button.disabled = true;
             };
-        }
-        else if (state == ApheleiaButtonState.default)
-        {
+            if (state == ApheleiaButtonState.default)
+            {
+                this.button.disabled = false;
+            };
+        };
 
-        }
-        else if (state == ApheleiaButtonState.disabled)
+        if (this.buttonHasLoader)
         {
+            if (state == ApheleiaButtonState.clicked)
+            {
+                this.loader?.classList.add('aph-button-loader-active');
+            };
+            if (state == ApheleiaButtonState.disabled || state == ApheleiaButtonState.default)
+            {
+                this.loader?.classList.remove('aph-button-loader-active');
+            };
+        };
 
+        if (this.buttonText)
+        {
+            if (state == ApheleiaButtonState.clicked)
+            {
+                this.text?.classList.remove('aph-button-text-active');
+            };
+            if (state == ApheleiaButtonState.disabled || state == ApheleiaButtonState.default)
+            {
+                this.text?.classList.add('aph-button-text-active');
+            };
+        };
+
+        if (this.buttonIcon)
+        {
+            if (state == ApheleiaButtonState.clicked)
+            {
+                this.icon?.classList.remove('aph-button-icon-active');
+            };
+            if (state == ApheleiaButtonState.disabled || state == ApheleiaButtonState.default)
+            {
+                this.icon?.classList.add('aph-button-icon-active');
+            };
         };
 
         this.state = state;
@@ -102,13 +151,14 @@ class ApheleiaButton extends HTMLElement
         this.buttonHasMargin = true;
         this.buttonIsFullWidth = false;
         this.buttonIsDisabled = false;
+        let buttonIconMargin: number = 0;
 
-        if (type && ApheleiaButtonType[type])
+        if (type != undefined && ApheleiaButtonType[type])
         {
             this.buttonType = type;
         };
 
-        if (size && ApheleiaButtonSize[size])
+        if (size != undefined && ApheleiaButtonSize[size])
         {
             this.buttonSize = size;
         };
@@ -206,7 +256,7 @@ class ApheleiaButton extends HTMLElement
         if (this.buttonIconLeft && !this.buttonIcon)
         {
             this.iconLeft = new ApheleiaIcon();
-            this.iconLeft.setAttributes(this.buttonIconLeft, '24');
+            this.iconLeft.setAttributes(this.buttonIconLeft, 24);
             this.iconLeft.construct();
             this.iconLeft.style.marginRight = '6px';
             this.iconLeft.style.marginLeft = '8px';
@@ -224,10 +274,6 @@ class ApheleiaButton extends HTMLElement
             this.text.innerHTML = this.buttonText;
 
             this.button.appendChild(this.text);
-
-            /*
-            */
-            this.text.style.opacity = '1';
 
             if (this.buttonHasMargin)
             {
@@ -262,10 +308,11 @@ class ApheleiaButton extends HTMLElement
         if (this.buttonIcon && !this.buttonText)
         {
             this.icon = new ApheleiaIcon();
-            this.icon.setAttributes(this.buttonIcon, '24');
+            this.icon.classList.add('aph-button-icon');
+            this.icon.setAttributes(this.buttonIcon, 24);
             this.icon.construct();
-            this.icon.style.marginRight = '3px';
-            this.icon.style.marginLeft = '3px';
+            this.icon.style.marginRight = `${ApheleiaButtonSizeIconMargin[this.buttonSize]}px`;
+            this.icon.style.marginLeft = `${ApheleiaButtonSizeIconMargin[this.buttonSize]}px`;
 
             this.button.appendChild(this.icon);
         };
@@ -276,7 +323,7 @@ class ApheleiaButton extends HTMLElement
         if (this.buttonIconRight && !this.buttonIcon)
         {
             this.iconRight = new ApheleiaIcon();
-            this.iconRight.setAttributes(this.buttonIconRight, '24');
+            this.iconRight.setAttributes(this.buttonIconRight, 24);
             this.iconRight.construct();
             this.iconRight.style.marginRight = '6px';
             this.iconRight.style.marginLeft = '8px';
@@ -300,7 +347,7 @@ class ApheleiaButton extends HTMLElement
         {
             this.button.addEventListener('click', () =>
             {
-
+                this.updateState(ApheleiaButtonState.clicked);
             });
         };
 
@@ -329,6 +376,11 @@ class ApheleiaButton extends HTMLElement
     buttonHasMargin: boolean = true;
     buttonIsFullWidth: boolean = false;
     buttonIsDisabled: boolean = false;
+
+    buttonAutoFocus: boolean = false;
+    buttonDisabled: boolean = false;
+    buttonForm?: string;
+
 
     /*
         Class elements
