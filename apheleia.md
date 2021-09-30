@@ -13,11 +13,11 @@
 
 ## ApheleiaIcon Functions
 
-| Function        | Parameteres             | Types                                                         | Nullable | Description                                 |
-| --------------- | ----------------------- | ------------------------------------------------------------- | -------- | ------------------------------------------- |
-| getAttributes() |                         |                                                               |          |                                             |
-| setAttributes() | iconName <br/> iconSize | [ApheleiaSupportedIcon](#apheleiasupportedicon)<br/>  integer |           :white_check_mark: <br/> :white_check_mark: ||
-| construct()     |                         |                                                               |          |                                             |
+| Function        | Parameteres             | Types                                                         | Nullable                                    | Description |
+| --------------- | ----------------------- | ------------------------------------------------------------- | ------------------------------------------- | ----------- |
+| getAttributes() |                         |                                                               |                                             |             |
+| setAttributes() | iconName <br/> iconSize | [ApheleiaSupportedIcon](#apheleiasupportedicon)<br/>  integer | :white_check_mark: <br/> :white_check_mark: |             |
+| construct()     |                         |                                                               |                                             |             |
 
 # ApheleiaSupportedIcon
 
@@ -101,3 +101,20 @@
 - large
 - extraLarge
 - custom
+
+| Attribute      | Supported            | Type            |
+| -------------- | -------------------- | --------------- |
+| accept         | :white_large_square: | file            |
+| alt            | :white_large_square: | image           |
+| autofocus      | :white_large_square: |                 |
+| autocomplete   | :white_check_mark:   |                 |
+| checked        | :white_large_square: | radio, checkbox |
+| dirname        | :white_large_square: | text, search    |
+| disabled       | :white_check_mark:   |                 |
+| form           | :white_large_square: |                 |
+| formaction     | :white_large_square: | image, submit   |
+| formenctype    | :white_large_square: | image, submit   |
+| formmethod     | :white_large_square: | image, submit   |
+| formnovalidate | :white_large_square: | image, submit   |
+| formtarget     | :white_large_square: | image, submit   |
+| formtarget     | :white_large_square: | image, submit   |
