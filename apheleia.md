@@ -102,19 +102,45 @@
 - extraLarge
 - custom
 
-| Attribute      | Supported            | Type            |
-| -------------- | -------------------- | --------------- |
-| accept         | :white_large_square: | file            |
-| alt            | :white_large_square: | image           |
-| autofocus      | :white_large_square: |                 |
-| autocomplete   | :white_check_mark:   |                 |
-| checked        | :white_large_square: | radio, checkbox |
-| dirname        | :white_large_square: | text, search    |
-| disabled       | :white_check_mark:   |                 |
-| form           | :white_large_square: |                 |
-| formaction     | :white_large_square: | image, submit   |
-| formenctype    | :white_large_square: | image, submit   |
-| formmethod     | :white_large_square: | image, submit   |
-| formnovalidate | :white_large_square: | image, submit   |
-| formtarget     | :white_large_square: | image, submit   |
-| formtarget     | :white_large_square: | image, submit   |
+# ApheleiaInput
+
+```html
+<aph-input></aph-input>
+```
+
+## Supported Html Input Attributes
+
+| Attribute      | Supported            | Type                             |
+| -------------- | -------------------- | -------------------------------- |
+| accept         | :white_large_square: | file                             |
+| alt            | :white_large_square: | image                            |
+| autofocus      | :white_large_square: |                                  |
+| autocomplete   | :white_check_mark:   |                                  |
+| checked        | :white_large_square: | radio, checkbox                  |
+| dirname        | :white_large_square: | text, search                     |
+| disabled       | :white_check_mark:   |                                  |
+| form           | :white_large_square: |                                  |
+| formaction     | :white_large_square: | image, submit                    |
+| formenctype    | :white_large_square: | image, submit                    |
+| formmethod     | :white_large_square: | image, submit                    |
+| formnovalidate | :white_large_square: | image, submit                    |
+| formtarget     | :white_large_square: | image, submit                    |
+| formtarget     | :white_large_square: | image, submit                    |
+| height         | :white_large_square: | image                            |
+| list           | :white_large_square: |                                  |
+| max            | :white_large_square: | number                           |
+| maxlength      | :white_large_square: | password, search, tel, text, url |
+| min            | :white_large_square: | number                           |
+| minlength      | :white_large_square: | password, search, tel, text, url |
+| multiple       | :white_large_square: | email, file                      |
+| name           | :white_large_square: |                                  |
+| pattern        | :white_large_square: | password, text, tel              |
+| placeholder    | :white_large_square: | password, search, tel ,text, url |
+| readonly       | :white_large_square: |                                  |
+| required       | :white_large_square: |                                  |
+| size           | :white_large_square: | email, password, tel, text, url  |
+| src            | :white_large_square: | image                            |
+| step           | :white_large_square: | number                           |
+| type           | :white_large_square: |                                  |
+| value          | :white_large_square: |                                  |
+| width          | :white_large_square: |                                  |

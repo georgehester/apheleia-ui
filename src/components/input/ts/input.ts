@@ -60,7 +60,7 @@ class ApheleiaInput extends HTMLElement
         this.input.classList.add('aph-input');
         this.input.type = `${ApheleiaInputType[this.inputType]}`;
 
-
+        
     };
 
     /*
