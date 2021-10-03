@@ -18,13 +18,14 @@ enum ApheleiaInputState
 */
 enum ApheleiaInputType
 {
-    text,
     email,
-    tel,
-    url,
-    search,
+    number,
     password,
-    number
+    search,
+    tel,
+    text,
+    textarea,
+    url
 };
 
 /*
@@ -53,20 +54,65 @@ class ApheleiaInput extends HTMLElement
     {
         this.innerHTML = '';
 
+        this.inputId = 'test-aph-input';
+        this.inputLabel = 'Email';
+        this.inputHelper = 'Please enter an email with an @ and tld'
+        this.inputTopHelper = 'Please enter an email with an @ and tld'
+
+        /*
+
+        */
+        if (this.inputLabel)
+        {
+            this.label = document.createElement('label');
+            if (this.inputId)
+            {
+                this.label.htmlFor = `${this.inputId}-input`;
+            };
+            this.label.innerText = this.inputLabel;
+            this.appendChild(this.label);
+        };
+
+        /*
+
+        */
+        if (this.inputTopHelper)
+        {
+            this.topHelper = document.createElement('span');
+            this.topHelper.innerText = this.inputTopHelper;
+            this.appendChild(this.topHelper);
+        };
+
         /*
 
         */
         this.input = document.createElement('input');
         this.input.classList.add('aph-input');
         this.input.type = `${ApheleiaInputType[this.inputType]}`;
+        this.input.id = `${this.inputId}-input`;
+        this.appendChild(this.input);
 
-        
+        /*
+
+        */
+        if (this.inputHelper)
+        {
+            this.helper = document.createElement('span');
+            this.helper.innerText = this.inputHelper;
+            this.appendChild(this.helper);
+        };
     };
 
     /*
         Class attributes
     */
+    inputId?: string;
     inputType: ApheleiaInputType = ApheleiaInputType.text;
+    inputLabel?: string;
+    inputHelper?: string;
+    inputTopHelper?: string;
+
+    inputPlaceholder?: string;
 
     /*
         Class elements
@@ -74,6 +120,8 @@ class ApheleiaInput extends HTMLElement
     input?: HTMLInputElement;
     icon?: ApheleiaIcon;
     label?: HTMLLabelElement;
+    topHelper?: HTMLSpanElement;
+    helper?: HTMLSpanElement;
     errorLabel?: HTMLSpanElement;
 
     /*
