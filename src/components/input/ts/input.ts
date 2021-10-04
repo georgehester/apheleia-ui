@@ -4,6 +4,18 @@
 /// <reference path="../../icon/ts/icon.ts" />
 
 /*
+    Input sizes
+*/
+enum ApheleiaInputSize
+{
+    small,
+    medium,
+    large,
+    custom
+};
+
+
+/*
     Input states
 */
 enum ApheleiaInputState
@@ -55,9 +67,10 @@ class ApheleiaInput extends HTMLElement
         this.innerHTML = '';
 
         this.inputId = 'test-aph-input';
-        this.inputLabel = 'Email';
-        this.inputHelper = 'Please enter an email with an @ and tld'
-        this.inputTopHelper = 'Please enter an email with an @ and tld'
+        this.inputLabel = 'Tincidunt';
+        this.inputHelper = 'Lorem ipsum dolor sit amet.';
+        this.inputRequirement = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        this.inputType = ApheleiaInputType.number;
 
         /*
 
@@ -65,6 +78,7 @@ class ApheleiaInput extends HTMLElement
         if (this.inputLabel)
         {
             this.label = document.createElement('label');
+            this.label.classList.add('aph-input-label');
             if (this.inputId)
             {
                 this.label.htmlFor = `${this.inputId}-input`;
@@ -76,11 +90,12 @@ class ApheleiaInput extends HTMLElement
         /*
 
         */
-        if (this.inputTopHelper)
+        if (this.inputRequirement)
         {
-            this.topHelper = document.createElement('span');
-            this.topHelper.innerText = this.inputTopHelper;
-            this.appendChild(this.topHelper);
+            this.requirement = document.createElement('span');
+            this.requirement.classList.add('aph-input-top-helper');
+            this.requirement.innerText = this.inputRequirement;
+            this.appendChild(this.requirement);
         };
 
         /*
@@ -92,12 +107,20 @@ class ApheleiaInput extends HTMLElement
         this.input.id = `${this.inputId}-input`;
         this.appendChild(this.input);
 
+        if (this.inputSize != ApheleiaInputSize.custom)
+        {
+            this.input.classList.add(`aph-input-size-${ApheleiaInputSize[this.inputSize]}`);
+        };
+
+        //this.input.pattern = '[0-9]*';
+
         /*
 
         */
         if (this.inputHelper)
         {
             this.helper = document.createElement('span');
+            this.helper.classList.add('aph-input-helper');
             this.helper.innerText = this.inputHelper;
             this.appendChild(this.helper);
         };
@@ -110,7 +133,8 @@ class ApheleiaInput extends HTMLElement
     inputType: ApheleiaInputType = ApheleiaInputType.text;
     inputLabel?: string;
     inputHelper?: string;
-    inputTopHelper?: string;
+    inputRequirement?: string;
+    inputSize: ApheleiaInputSize = ApheleiaInputSize.medium;
 
     inputPlaceholder?: string;
 
@@ -120,7 +144,7 @@ class ApheleiaInput extends HTMLElement
     input?: HTMLInputElement;
     icon?: ApheleiaIcon;
     label?: HTMLLabelElement;
-    topHelper?: HTMLSpanElement;
+    requirement?: HTMLSpanElement;
     helper?: HTMLSpanElement;
     errorLabel?: HTMLSpanElement;
 
