@@ -381,6 +381,16 @@ class ApheleiaButton extends HTMLElement
     buttonDisabled: boolean = false;
     buttonForm?: string;
 
+    /*
+        Implement
+    */
+    buttonRightFlat?: boolean;
+    buttonLeftFlat?: boolean;
+    buttonTopFlat?: boolean;
+    buttonBottomFlat?: boolean;
+    
+
+
 
     /*
         Class elements

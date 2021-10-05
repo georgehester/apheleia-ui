@@ -1,8 +1,12 @@
-aph-input {
+aph-text-input {
     display: flex;
     position: relative;
     width: min-content;
     flex-direction: column;
+}
+
+.aph-text-input-container {
+    position: relative;
 
     aph-icon { 
         position: absolute;
@@ -13,7 +17,7 @@ aph-input {
     }
 }
 
-.aph-input {
+.aph-text-input {
     background-color: $color-light-gray-04;
 
     -webkit-appearance: none;
@@ -84,19 +88,19 @@ aph-input {
     }
 }
 
-.aph-input-size-small {
+.aph-text-input-size-small {
     height: 32px;
 }
 
-.aph-input-size-medium {
+.aph-text-input-size-medium {
     height: 40px;
 }
 
-.aph-input-size-large {
+.aph-text-input-size-large {
     height: 48px;
 }
 
-.aph-input-error {
+.aph-text-input-error {
     border-color: $color-red-40;
 
     &:hover {
@@ -119,11 +123,11 @@ aph-input {
     }
 }
 
-.aph-input-icon-error {
+.aph-text-input-icon-error {
     fill: $color-red-40;
 }
 
-.aph-input-label {
+.aph-text-input-label {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     line-height: 14px;
@@ -134,7 +138,7 @@ aph-input {
     margin-bottom: 4px;
 }
 
-.aph-input-helper {
+.aph-text-input-helper {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     line-height: 18px;
@@ -145,7 +149,18 @@ aph-input {
     margin-top: 4px;
 }
 
-.aph-input-top-helper {
+.aph-text-input-helper-error {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-red-40;
+    margin-top: 4px;
+}
+
+.aph-text-input-requirement {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     line-height: 16px;

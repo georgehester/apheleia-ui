@@ -197,3 +197,5 @@
 | type           | :white_large_square: |                                  |
 | value          | :white_large_square: |                                  |
 | width          | :white_large_square: |                                  |
+
+- Use this.input.pattern = '[0-9]*'; with number type on input to make sure invalid data is picked up by css.
