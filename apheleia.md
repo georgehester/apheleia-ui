@@ -110,30 +110,30 @@
 
 ## Supported Html Input Types
 
-| Type           | Supported            |
-| -------------- | -------------------- |
-| button         | :white_large_square: |
-| checkbox       | :white_large_square: |
-| color          | :white_large_square: |
-| date           | :white_large_square: |
-| datetime-local | :white_large_square: |
-| email          | :white_large_square: |
-| file           | :white_large_square: |
-| hidden         | :white_large_square: |
-| image          | :white_large_square: |
-| month          | :white_large_square: |
-| number         | :white_large_square: |
-| password       | :white_large_square: |
-| radio          | :white_large_square: |
-| range          | :white_large_square: |
-| reset          | :white_large_square: |
-| search         | :white_large_square: |
-| submit         | :white_large_square: |
-| tel            | :white_large_square: |
-| text           | :white_large_square: |
-| time           | :white_large_square: |
-| url            | :white_large_square: |
-| week           | :white_large_square: |
+| Type           | Supported            | [ApheleiaButton](#apheleiaicon) | [ApheleiaTextInput](#apheleiaicon) | [ApheleiaNumberInput](#apheleiaicon) |
+| -------------- | -------------------- | ------------------------------- | ---------------------------------- | ------------------------------------ |
+| button         | :white_check_mark:   | :white_check_mark:              | :white_large_square:               | :white_large_square:                 |
+| checkbox       | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| color          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| date           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| datetime-local | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| email          | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| file           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| hidden         | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| image          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| month          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| number         | :white_check_mark:   | :white_large_square:            | :white_large_square:               | :white_check_mark:                   |
+| password       | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| radio          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| range          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| reset          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| search         | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| submit         | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| tel            | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| text           | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| time           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| url            | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
+| week           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 
 
 | Type           | Class              |
