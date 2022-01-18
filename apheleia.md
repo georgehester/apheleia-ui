@@ -136,7 +136,7 @@
 | :x: ~~week~~      | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 
 > Key: <br>
-> ~~    ~~ - No support <br> 
+> ~~type~~ - No support <br> 
 > :clock3: - Support coming later <br>
 > :x: - Bad browser support
 
