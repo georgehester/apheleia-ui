@@ -118,23 +118,27 @@
 | date           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | datetime-local | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | email          | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
-| file           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
-| hidden         | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
-| image          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
-| month          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| :clock3: file  | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| ~~hidden~~     | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| ~~image~~      | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| :x:~~month~~   | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | number         | :white_check_mark:   | :white_large_square:            | :white_large_square:               | :white_check_mark:                   |
 | password       | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
-| radio          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
-| range          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
-| reset          | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| :clock3: radio | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| :clock3: range | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| ~~reset~~      | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | search         | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
-| submit         | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| ~~submit~~     | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | tel            | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
 | text           | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
 | time           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 | url            | :white_check_mark:   | :white_large_square:            | :white_check_mark:                 | :white_large_square:                 |
-| week           | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
+| :x:~~week~~    | :white_large_square: | :white_large_square:            | :white_large_square:               | :white_large_square:                 |
 
+> Key: <br>
+> ~~    ~~ - No support <br> 
+> :clock3: - Support coming later <br>
+> :x: - Bad browser support
 
 | Type           | Class              |
 | -------------- | ------------------ |
