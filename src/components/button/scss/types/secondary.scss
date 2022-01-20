@@ -1,19 +1,19 @@
 // #region Button Type
 
-.aph-button-type-primary {
-    background-color: $color-blue-50;
+.aph-button-type-secondary {
+    background-color: $color-dark-gray-10;
     color: $color-text-01;
     fill: $color-icon-01;
     border: 1px solid transparent;
     transition: background-color 0.125s, box-shadow 0.125s;
 
     &:hover {
-        background-color: $color-blue-60;
+        background-color: $color-dark-gray-09;
         cursor: pointer;
     }
 
     &:active {
-        background-color: $color-blue-80;
+        background-color: $color-middle-gray;
     }
 
     &:focus {

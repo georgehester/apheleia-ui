@@ -1,23 +1,24 @@
 // #region Button Type
 
-.aph-button-type-primary {
-    background-color: $color-blue-50;
-    color: $color-text-01;
-    fill: $color-icon-01;
+.aph-button-type-inputnumber {
+    background-color: $color-light-gray-04;
+    color: $color-text-05;
+    fill: $color-icon-05;
     border: 1px solid transparent;
     transition: background-color 0.125s, box-shadow 0.125s;
 
     &:hover {
-        background-color: $color-blue-60;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+        border-color: rgba(0, 0, 0, 0.1);
         cursor: pointer;
     }
 
     &:active {
-        background-color: $color-blue-80;
+        background-color: $color-light-gray-05;
     }
 
     &:focus {
-        box-shadow: inset 0 0 0 1px $color-blue-50, inset 0 0 0 2px $color-white;
+        box-shadow: inset 0 0 0 1px $color-blue-50, inset 0 0 0 2px $color-light-gray-03;
         border-color: $color-blue-50;
     }
 
@@ -25,12 +26,9 @@
         background-color: $color-light-gray-05;
         color: $color-text-02;
         fill: $color-icon-02;
+        box-shadow: none;
+        border-color: transparent;
         cursor: default;
-
-        &:focus {
-            box-shadow: none;
-            border-color: transparent;
-        }
     }
 
     .aph-button-loader {

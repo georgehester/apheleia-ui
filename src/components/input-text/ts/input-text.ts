@@ -44,73 +44,101 @@ enum ApheleiaTextInputType
 */
 class ApheleiaTextInput extends HTMLElement
 {
-
+    /*
+        Function which updates the current state of the input
+    */
     updateState(state: ApheleiaTextInputState, error?: string): void
     {
-        if (!this.input)
+        if (!this.input || !this.inputContainer)
         {
             return;
         };
 
+        this.textInputCurrentState = state;
+
         if (state == ApheleiaTextInputState.default)
         {
-            // Remove error helper
-            // Remove input styling
-            // Remove icon / styling
+            this.input.disabled = false;
 
             if (this.textInputIcon)
             {
-                this.icon?.setAttributes(this.textInputIcon, 16);
-                this.icon?.construct();
-                this.icon?.classList.remove('aph-text-input-icon-error');
+                this.icon.setAttributes(this.textInputIcon, 16);
+                this.icon.construct();
+                this.icon.classList.remove('aph-text-input-icon-error');
                 this.input.style.paddingRight = '40px';
+
+                if (!this.inputContainer.contains(this.icon))
+                {
+                    this.inputContainer.appendChild(this.icon);
+                };
             }
-            else 
+            else if (this.inputContainer.contains(this.icon))
             {
                 this.input.style.paddingRight = '8px';
+                this.inputContainer.removeChild(this.icon);
+            };
+
+            if (this.textInputHelper)
+            {
+                this.helper.innerText = this.textInputHelper;
+                this.helper.classList.remove('aph-text-input-helper-error');
+            }
+            else if (this.contains(this.helper))
+            {
+                this.removeChild(this.helper);
             };
 
             this.input.classList.remove('aph-text-input-error');
-
-            
         }
         else if (state == ApheleiaTextInputState.error)
         {
-            // Add error helper
-            // Add input styling 
-            // Add icon /styling
+            this.input.disabled = false;
 
-            if (!this.textInputIcon)
+            if (!this.textInputIcon && !this.inputContainer.contains(this.icon))
             {
-                this.icon = new ApheleiaIcon();
-                this.inputContainer?.appendChild(this.icon);
+                this.inputContainer.appendChild(this.icon);
             };
 
-            this.icon?.setAttributes(ApheleiaSupportedIcon.error, 16);
-            this.icon?.construct();
-            this.icon?.classList.add('aph-text-input-icon-error');
+            this.icon.setAttributes(ApheleiaSupportedIcon.error, 16);
+            this.icon.construct();
+            this.icon.classList.add('aph-text-input-icon-error');
             this.input.style.paddingRight = '40px';
 
-            this.input.classList.add('aph-text-input-error');
+            if (!this.textInputHelper && !this.contains(this.helper) && error)
+            {
+                this.append(this.helper);
+            };
 
             if (error)
             {
-                this.helper?.classList.add('aph-text-input-helper-error');
-            };
-
-            if (error && !this.textInputHelper)
-            {
-                this.helper = document.createElement('span');
                 this.helper.innerText = error;
-                this.appendChild(this.helper);
+                this.helper.classList.add('aph-text-input-helper-error');
             };
 
-            this.helper?.classList.add('aph-text-input-helper-error');
-
+            this.input.classList.add('aph-text-input-error');
         }
         else if (state == ApheleiaTextInputState.disabled)
         {
-            // Disable input
+            this.input.value = '';
+            this.input.disabled = true;
+
+            if (this.inputContainer.contains(this.icon))
+            {
+                this.input.style.paddingRight = '8px';
+                this.inputContainer.removeChild(this.icon);
+            };
+
+            if (this.textInputHelper)
+            {
+                this.helper.innerText = this.textInputHelper;
+                this.helper.classList.remove('aph-text-input-helper-error');
+            }
+            else if (this.contains(this.helper))
+            {
+                this.removeChild(this.helper);
+            };
+
+            this.input.classList.remove('aph-text-input-error');
         };
     };
 
@@ -119,12 +147,22 @@ class ApheleiaTextInput extends HTMLElement
     */
     getAttributes(): void
     {
+        this.setAttributes(
+            ApheleiaTextInputType[<keyof typeof ApheleiaTextInputType>this.getAttribute('type')],
+            ApheleiaTextInputSize[<keyof typeof ApheleiaTextInputSize>this.getAttribute('size')],
+            this.getAttribute('id') || undefined,
+            this.getAttribute('label') || undefined,
+            this.getAttribute('requirement') || undefined,
+            this.getAttribute('helper') || undefined,
+            this.getAttribute('placeholder') || undefined,
+            ApheleiaSupportedIcon[<keyof typeof ApheleiaSupportedIcon>this.getAttribute('icon')]
+        );
     };
 
     /*
         Class set attributes function
     */
-    setAttributes(type?: ApheleiaTextInputType, size?: ApheleiaTextInputSize, id?: string, label?: string, requirement?: string, helper?: string, placeholder?: string): void
+    setAttributes(type?: ApheleiaTextInputType, size?: ApheleiaTextInputSize, id?: string, label?: string, requirement?: string, helper?: string, placeholder?: string, icon?: ApheleiaSupportedIcon): void
     {
         this.textInputType = ApheleiaTextInputType.text;
         this.textInputSize = ApheleiaTextInputSize.small;
@@ -133,6 +171,7 @@ class ApheleiaTextInput extends HTMLElement
         this.textInputRequirement = undefined;
         this.textInputHelper = undefined;
         this.textInputPlaceholder = undefined;
+        this.textInputIcon = undefined;
 
         if (type != undefined && ApheleiaTextInputType[type])
         {
@@ -168,6 +207,11 @@ class ApheleiaTextInput extends HTMLElement
         {
             this.textInputPlaceholder = placeholder;
         };
+
+        if (icon != undefined)
+        {
+            this.textInputIcon = icon;
+        };
     };
 
     /*
@@ -175,18 +219,13 @@ class ApheleiaTextInput extends HTMLElement
     */
     construct(): void
     {
+        /*
+            Reset inner html
+        */
         this.innerHTML = '';
 
-        this.textInputId = 'test-aph-input';
-        this.textInputLabel = 'Email';
-        this.textInputPlaceholder = 'Email';
-        //this.textInputHelper = 'Please include the @ symbol.';
-        this.textInputRequirement = 'Enter the email linked to your admin account.';
-        this.textInputType = ApheleiaTextInputType.email;
-        this.textInputIcon = ApheleiaSupportedIcon.chevronright;
-
         /*
-
+            Create input label element if required 
         */
         if (this.textInputLabel)
         {
@@ -201,7 +240,7 @@ class ApheleiaTextInput extends HTMLElement
         };
 
         /*
-
+            Create input requirement if required 
         */
         if (this.textInputRequirement)
         {
@@ -211,28 +250,47 @@ class ApheleiaTextInput extends HTMLElement
             this.appendChild(this.requirement);
         };
 
+        /*
+            Create input container
+        */
         this.inputContainer = document.createElement('div');
         this.inputContainer.classList.add('aph-text-input-container');
 
         /*
-
+            Create input
         */
         this.input = document.createElement('input');
         this.input.classList.add('aph-text-input');
         this.input.type = `${ApheleiaTextInputType[this.textInputType]}`;
         this.input.id = `${this.textInputId}-input`;
+        this.input.addEventListener('keyup', () =>
+        {
+            if (this.textInputCurrentState == ApheleiaTextInputState.error)
+            {
+                this.updateState(ApheleiaTextInputState.default);
+            };
+        });
         this.inputContainer.appendChild(this.input);
 
+        /*
+            Set placeholder attribute to input if required
+        */
         if (this.textInputPlaceholder)
         {
             this.input.placeholder = this.textInputPlaceholder;
         };
 
+        /*
+            Set input size 
+        */
         if (this.textInputSize != ApheleiaTextInputSize.custom)
         {
             this.input.classList.add(`aph-text-input-size-${ApheleiaTextInputSize[this.textInputSize]}`);
         };
 
+        /*
+            Create input icon if required
+        */
         if (this.textInputIcon)
         {
             this.icon = new ApheleiaIcon();
@@ -244,11 +302,13 @@ class ApheleiaTextInput extends HTMLElement
             this.inputContainer.appendChild(this.icon);
         };
 
+        /*
+            Append the input container
+        */
         this.appendChild(this.inputContainer);
 
-
         /*
-
+            Create input helper if required
         */
         if (this.textInputHelper)
         {
@@ -257,8 +317,6 @@ class ApheleiaTextInput extends HTMLElement
             this.helper.innerText = this.textInputHelper;
             this.appendChild(this.helper);
         };
-
-        this.updateState(ApheleiaTextInputState.error, 'Test');
     };
 
     /*
@@ -272,16 +330,17 @@ class ApheleiaTextInput extends HTMLElement
     textInputHelper?: string;
     textInputPlaceholder?: string;
     textInputIcon?: ApheleiaSupportedIcon;
+    textInputCurrentState: ApheleiaTextInputState = ApheleiaTextInputState.default;
 
     /*
         Class elements
     */
     input?: HTMLInputElement;
     inputContainer?: HTMLDivElement;
-    icon?: ApheleiaIcon;
+    icon: ApheleiaIcon = new ApheleiaIcon();
     label?: HTMLLabelElement;
     requirement?: HTMLSpanElement;
-    helper?: HTMLSpanElement;
+    helper: HTMLSpanElement = document.createElement('span');
     errorLabel?: HTMLSpanElement;
 
     /*
@@ -295,4 +354,7 @@ class ApheleiaTextInput extends HTMLElement
     };
 };
 
+/*
+    Define the class as a custom html element
+*/
 window.customElements.define('aph-text-input', ApheleiaTextInput);

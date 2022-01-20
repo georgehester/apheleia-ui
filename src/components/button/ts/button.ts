@@ -26,18 +26,6 @@ enum ApheleiaButtonSize
 };
 
 /*
-    Button sizes margins
-*/
-const ApheleiaButtonSizeIconMargin: number[] =
-    [
-        3,
-        7,
-        11,
-        19,
-        7
-    ];
-
-/*
     Button types
 */
 enum ApheleiaButtonType
@@ -47,8 +35,10 @@ enum ApheleiaButtonType
     tertiary,
     ghost,
     danger,
-    gray,
-    grayGlass
+    dropdown,
+    dropdownitem,
+    dropdownitemdanger,
+    inputnumber
 };
 
 /*
@@ -131,15 +121,19 @@ class ApheleiaButton extends HTMLElement
             this.hasAttribute('nodisable') ? false : true,
             this.hasAttribute('nomargin') ? false : true,
             this.hasAttribute('fullwidth'),
-            this.hasAttribute('disabled')
+            this.hasAttribute('disabled'),
+            this.getAttribute('borderradii') || undefined
         );
     };
 
     /*
         Class set attributes function
     */
-    setAttributes(type?: ApheleiaButtonType, size?: ApheleiaButtonSize, text?: string, icon?: ApheleiaSupportedIcon, iconLeft?: ApheleiaSupportedIcon, iconRight?: ApheleiaSupportedIcon, hasLoader?: boolean, autoDisable?: boolean, hasMargin?: boolean, isFullWidth?: boolean, isDisabled?: boolean): void
+    setAttributes(type?: ApheleiaButtonType, size?: ApheleiaButtonSize, text?: string, icon?: ApheleiaSupportedIcon, iconLeft?: ApheleiaSupportedIcon, iconRight?: ApheleiaSupportedIcon, hasLoader?: boolean, autoDisable?: boolean, hasMargin?: boolean, isFullWidth?: boolean, isDisabled?: boolean, borderRadii?: string): void
     {
+        /*
+            Set default attribute values
+        */
         this.buttonType = ApheleiaButtonType.primary;
         this.buttonSize = ApheleiaButtonSize.medium;
         this.buttonText = undefined;
@@ -151,7 +145,7 @@ class ApheleiaButton extends HTMLElement
         this.buttonHasMargin = true;
         this.buttonIsFullWidth = false;
         this.buttonIsDisabled = false;
-        let buttonIconMargin: number = 0;
+        this.buttonBorderRadii = undefined;
 
         if (type != undefined && ApheleiaButtonType[type])
         {
@@ -171,11 +165,13 @@ class ApheleiaButton extends HTMLElement
         {
             this.buttonIcon = icon;
         }
-        else if (iconLeft && ApheleiaSupportedIcon[iconLeft])
+
+        if (iconLeft && ApheleiaSupportedIcon[iconLeft])
         {
             this.buttonIconLeft = iconLeft;
-        }
-        else if (iconRight && ApheleiaSupportedIcon[iconRight])
+        };
+
+        if (iconRight && ApheleiaSupportedIcon[iconRight])
         {
             this.buttonIconRight = iconRight;
         };
@@ -204,6 +200,11 @@ class ApheleiaButton extends HTMLElement
         {
             this.buttonIsDisabled = isDisabled;
         };
+
+        if (borderRadii != undefined)
+        {
+            this.buttonBorderRadii = borderRadii;
+        };
     };
 
     /*
@@ -211,21 +212,23 @@ class ApheleiaButton extends HTMLElement
     */
     construct(): void
     {
+        /*
+            Reset inner html
+        */
         this.innerHTML = '';
 
         /*
-
+            Create html button element 
         */
         this.button = document.createElement('button');
-        this.button.classList.add('aph-button');
 
         /*
-
+            Assign the button styling 
         */
         this.button.classList.add(`aph-button-type-${ApheleiaButtonType[this.buttonType]}`);
 
         /*
-
+            Create html loader element if required 
         */
         if (this.buttonHasLoader)
         {
@@ -235,7 +238,16 @@ class ApheleiaButton extends HTMLElement
         };
 
         /*
+            Assign the button radius if provided 
+        */
+        if (this.buttonBorderRadii)
+        {
+            let borderRadii = this.buttonBorderRadii.split(',');
+            this.button.style.borderRadius = `${borderRadii[0]}px ${borderRadii[1]}px ${borderRadii[2]}px ${borderRadii[3]}px`;
+        };
 
+        /*
+            Assign the button size if provided
         */
         if (this.buttonSize != ApheleiaButtonSize.custom)
         {
@@ -243,7 +255,7 @@ class ApheleiaButton extends HTMLElement
         };
 
         /*
-
+            Assign the button width if required
         */
         if (this.buttonIsFullWidth)
         {
@@ -256,10 +268,9 @@ class ApheleiaButton extends HTMLElement
         if (this.buttonIconLeft && !this.buttonIcon)
         {
             this.iconLeft = new ApheleiaIcon();
+            this.iconLeft.classList.add('aph-button-icon-left');
             this.iconLeft.setAttributes(this.buttonIconLeft, 24);
             this.iconLeft.construct();
-            this.iconLeft.style.marginRight = '6px';
-            this.iconLeft.style.marginLeft = '8px';
 
             this.button.appendChild(this.iconLeft);
         };
@@ -311,8 +322,6 @@ class ApheleiaButton extends HTMLElement
             this.icon.classList.add('aph-button-icon');
             this.icon.setAttributes(this.buttonIcon, 24);
             this.icon.construct();
-            this.icon.style.marginRight = `${ApheleiaButtonSizeIconMargin[this.buttonSize]}px`;
-            this.icon.style.marginLeft = `${ApheleiaButtonSizeIconMargin[this.buttonSize]}px`;
 
             this.button.appendChild(this.icon);
         };
@@ -323,10 +332,9 @@ class ApheleiaButton extends HTMLElement
         if (this.buttonIconRight && !this.buttonIcon)
         {
             this.iconRight = new ApheleiaIcon();
+            this.iconRight.classList.add('aph-button-icon-right');
             this.iconRight.setAttributes(this.buttonIconRight, 24);
             this.iconRight.construct();
-            this.iconRight.style.marginRight = '6px';
-            this.iconRight.style.marginLeft = '8px';
 
             this.button.appendChild(this.iconRight);
         };
@@ -376,6 +384,7 @@ class ApheleiaButton extends HTMLElement
     buttonHasMargin: boolean = true;
     buttonIsFullWidth: boolean = false;
     buttonIsDisabled: boolean = false;
+    buttonBorderRadii?: string;
 
     buttonAutoFocus: boolean = false;
     buttonDisabled: boolean = false;
@@ -388,9 +397,6 @@ class ApheleiaButton extends HTMLElement
     buttonLeftFlat?: boolean;
     buttonTopFlat?: boolean;
     buttonBottomFlat?: boolean;
-    
-
-
 
     /*
         Class elements
@@ -398,7 +404,7 @@ class ApheleiaButton extends HTMLElement
     button?: HTMLButtonElement;
     loader?: HTMLDivElement;
     text?: HTMLSpanElement;
-    secondaryText?: HTMLSpanElement;
+    //secondaryText?: HTMLSpanElement;
     icon?: ApheleiaIcon;
     iconLeft?: ApheleiaIcon;
     iconRight?: ApheleiaIcon;
@@ -415,4 +421,7 @@ class ApheleiaButton extends HTMLElement
     };
 };
 
+/*
+    Define the class as a custom html element
+*/
 window.customElements.define('aph-button', ApheleiaButton);

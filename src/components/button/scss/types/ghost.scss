@@ -1,19 +1,21 @@
 // #region Button Type
 
-.aph-button-type-primary {
-    background-color: $color-blue-50;
-    color: $color-text-01;
-    fill: $color-icon-01;
+.aph-button-type-ghost {
+    background-color: transparent;
+    color: $color-blue-50;
+    fill: $color-blue-50;
     border: 1px solid transparent;
-    transition: background-color 0.125s, box-shadow 0.125s;
+    transition: background-color 0.125s, box-shadow 0.125s, color 0.125s, fill 0.125s;
 
     &:hover {
-        background-color: $color-blue-60;
+        background-color: $color-light-gray-03;
+        color: $color-blue-70;
+        fill: $color-blue-70;
         cursor: pointer;
     }
 
     &:active {
-        background-color: $color-blue-80;
+        background-color: $color-light-gray-05;
     }
 
     &:focus {
@@ -27,6 +29,11 @@
         fill: $color-icon-02;
         cursor: default;
 
+        .aph-button-loader {
+            border: 2px solid $color-white;
+            border-top-color: transparent;
+        }
+
         &:focus {
             box-shadow: none;
             border-color: transparent;
@@ -34,7 +41,7 @@
     }
 
     .aph-button-loader {
-        border: 2px solid $color-white;
+        border: 2px solid $color-blue-50;
         border-top-color: transparent;
     }
 }

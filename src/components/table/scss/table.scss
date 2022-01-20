@@ -1,0 +1,85 @@
+$table-border-radius: 8px;
+
+aph-table {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+}
+
+aph-table table {
+    width: 100%;
+    background-color: $color-light-gray-01;
+    border-collapse: collapse;
+    border-radius: $table-border-radius;
+    -moz-border-radius: $table-border-radius;
+}
+
+aph-table tbody tr {
+    border-bottom: 2px solid $color-light-gray-02;
+
+    &:last-child {
+        border: none;
+    }
+}
+
+aph-table thead tr {
+    border-bottom: 2px solid $color-light-gray-02;
+}
+
+aph-table thead tr:first-child th:first-child {
+    border-radius: $table-border-radius 0 0 0;
+}
+
+aph-table thead tr:first-child th:last-child {
+    border-radius: 0 $table-border-radius 0 0;
+}
+
+aph-table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 $table-border-radius;
+}
+
+aph-table tbody tr:last-child td:last-child {
+    border-radius: 0 0 $table-border-radius 0;
+}
+
+aph-table th {
+    @extend .aph-type-all;
+
+    background-color: $color-light-gray-03;
+
+    text-align: left;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+    font-weight: 600;
+    color: $color-text-05;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 64px;
+
+    max-width: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+aph-table td {
+    @extend .aph-type-all;
+
+    text-align: left;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+    font-weight: 500;
+    color: $color-text-05;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 64px;
+
+    max-width: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

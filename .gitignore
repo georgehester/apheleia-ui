@@ -19,3 +19,6 @@ build
 
 # Exclude package lock
 package-lock.json
+
+# Exclude testing folder 
+public

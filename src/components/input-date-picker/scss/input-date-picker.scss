@@ -1,0 +1,139 @@
+aph-date-input {
+    display: flex;
+    position: relative;
+    width: min-content;
+    flex-direction: column;
+}
+
+.aph-date-input-container {
+    position: relative;
+}
+
+.aph-date-input {
+    background-color: $color-light-gray-04;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    outline: none;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-dark-gray-02;
+    transition: border 0.125s, background 0.125s;
+    cursor: text;
+
+    &:hover {
+        border-color: $color-light-gray-06;
+    }
+
+    &:focus {
+        border-color: $color-blue-50;
+        background-color: transparent;
+    }
+
+    &::placeholder {
+        color: $color-dark-gray-10;   
+    }
+
+    &:disabled {
+        background-color: $color-light-gray-05;
+        cursor: default;
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+
+    &:invalid {
+        border-color: $color-yellow-50;
+    }
+}
+
+.aph-date-input-size-small {
+    height: 32px;
+}
+
+.aph-date-input-size-medium {
+    height: 40px;
+}
+
+.aph-date-input-size-large {
+    height: 48px;
+}
+
+.aph-date-input-error {
+    border-color: $color-red-40;
+
+    &:hover {
+        border-color: $color-red-40;
+    }
+
+    &:focus {
+        border-color: $color-blue-40;
+        background-color: transparent;
+    }
+
+    &:disabled {
+        background-color: $color-light-gray-05;
+        border-color: transparent;
+        cursor: default;
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+}
+
+.aph-date-input-label {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-dark-gray-02; 
+    margin-bottom: 4px;
+}
+
+.aph-date-input-helper {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-dark-gray-07; 
+    margin-top: 4px;
+}
+
+.aph-date-input-helper-error {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-red-40;
+    margin-top: 4px;
+}
+
+.aph-date-input-requirement {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-style: normal;
+    color: $color-dark-gray-07; 
+    margin-bottom: 4px;
+}

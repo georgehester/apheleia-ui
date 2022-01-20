@@ -1,42 +1,41 @@
-aph-text-input {
+aph-number-input {
     display: flex;
     position: relative;
     width: min-content;
     flex-direction: column;
 }
 
-.aph-text-input-container {
-    position: relative;
+aph-number-input input {
+    -moz-appearance: textfield;
 
-    aph-icon { 
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        right: 8px;
-        transform: translateY(-50%);
-    }
 }
 
-.aph-text-input {
-    background-color: $color-light-gray-04;
-
+aph-number-input input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    margin: 0;
+}
 
+aph-number-input input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.aph-number-input-container {
     position: relative;
+    display: flex;
+    flex-direction: row;
+}
 
+.aph-number-input {
+    background-color: $color-light-gray-04;
+    position: relative;
     padding-left: 8px;
     padding-right: 8px;
-
-    border-radius: 4px;
-
+    border-radius: 4px 0px 0px 4px;
     outline: none;
     border: 2px solid transparent;
     box-sizing: border-box;
-
     width: 100%;
-
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     line-height: 14px;
@@ -44,9 +43,7 @@ aph-text-input {
     letter-spacing: 0.5px;
     font-style: normal;
     color: $color-dark-gray-02;
-    
     transition: border 0.125s, background 0.125s;
-
     cursor: text;
 
     &:hover {
@@ -71,36 +68,24 @@ aph-text-input {
         }
     }
 
-    &:autofill {
-        background-color: rgba($color-blue-50, 0.1);
-    }
-
-    &:-webkit-autofill {
-        background-color: rgba($color-blue-50, 0.1);
-    }
-
-    &:-internal-autofill-selected {
-        background-color: rgba($color-blue-50, 0.1);
-    }
-
     &:invalid {
         border-color: $color-yellow-50;
     }
 }
 
-.aph-text-input-size-small {
+.aph-number-input-size-small {
     height: 32px;
 }
 
-.aph-text-input-size-medium {
+.aph-number-input-size-medium {
     height: 40px;
 }
 
-.aph-text-input-size-large {
+.aph-number-input-size-large {
     height: 48px;
 }
 
-.aph-text-input-error {
+.aph-number-input-error {
     border-color: $color-red-40;
 
     &:hover {
@@ -123,11 +108,7 @@ aph-text-input {
     }
 }
 
-.aph-text-input-icon-error {
-    fill: $color-red-40;
-}
-
-.aph-text-input-label {
+.aph-number-input-label {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     line-height: 14px;
@@ -138,7 +119,7 @@ aph-text-input {
     margin-bottom: 4px;
 }
 
-.aph-text-input-helper {
+.aph-number-input-helper {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     line-height: 18px;
@@ -149,7 +130,7 @@ aph-text-input {
     margin-top: 4px;
 }
 
-.aph-text-input-helper-error {
+.aph-number-input-helper-error {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     line-height: 18px;
@@ -160,7 +141,7 @@ aph-text-input {
     margin-top: 4px;
 }
 
-.aph-text-input-requirement {
+.aph-number-input-requirement {
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     line-height: 16px;

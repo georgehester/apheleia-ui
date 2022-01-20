@@ -3,9 +3,22 @@
 .aph-button-size-large {
     height: 48px;
 
-    aph-icon {
+    .aph-button-icon {
+        margin-left: 11px;
+        margin-right: 11px;
+        align-self: center;
+    }
+
+    .aph-button-icon-left {
         margin-right: 8px;
+        margin-left: 6px;
+        align-self: center;
+    }
+
+    .aph-button-icon-right {
+        margin-right: 6px;
         margin-left: 8px;
+        align-self: center;
     }
 
     span {

@@ -9,6 +9,39 @@
 
     <div style="width: 512px;">
 
+        <aph-date-input style="margin-left: 16px; margin-top: 16px; width: 256px;"></aph-date-input>
+
+        <aph-number-input style="margin-left: 16px; margin-top: 16px; width: 256px;">
+
+        </aph-number-input>
+
+
+        <aph-text-input type="password" helper="Testing 2022" label="Email" placeholder="Password"
+            style="margin-left: 16px; margin-top: 16px; width: 256px;">
+        </aph-text-input>
+
+        <aph-table style="margin-left: 16px; margin-top: 16px; width: 100%;">
+            <aph-table-header>
+                <aph-table-row>
+                    <aph-table-header-data>Test</aph-table-header-data>
+                    <aph-table-header-data>tes2</aph-table-header-data>
+                    <aph-table-header-data>Test</aph-table-header-data>
+                </aph-table-row>
+            </aph-table-header>
+            <aph-table-body>
+                <aph-table-row>
+                    <aph-table-data>2</aph-table-data>
+                    <aph-table-data>2</aph-table-data>
+                    <aph-table-data>2</aph-table-data>
+                </aph-table-row>
+                <aph-table-row>
+                    <aph-table-data>2</aph-table-data>
+                    <aph-table-data>2</aph-table-data>
+                    <aph-table-data>2</aph-table-data>
+                </aph-table-row>
+            </aph-table-body>
+        </aph-table>
+
         <p class="aph-type-body-short-01" style="margin: 16px;">
             Body Short 01
             <br>
@@ -50,14 +83,49 @@
 
     </div>
     <div>
-        <aph-icon id="test-icon" size="128" name="chevronLeft">
+        <aph-icon id="test-icon" size="24" name="chevronright">
         </aph-icon>
 
-        <aph-button size="small" text="chevronLeft">
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="primary" text="Small"
+            iconright="chevrondown">
+        </aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="medium" type="primary" text="Medium"
+            iconright="chevrondown">
+        </aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="large" type="primary" text="Large"
+            iconright="chevrondown">
+        </aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="extralarge" type="primary" text="Extra Large"
+            iconright="chevrondown">
         </aph-button>
 
-        <aph-text-input style="margin-left: 16px; margin-top: 16px; width: 256px;">
-        </aph-text-input>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" icon="chevrondown"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="medium" icon="chevrondown"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="large" icon="chevrondown"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="extralarge" icon="chevrondown"></aph-button>
+
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="primary" text="Primary"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="secondary" text="Secondary">
+        </aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="tertiary" text="Tertiary">
+        </aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="ghost" text="Ghost"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="danger" text="Danger"></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px;" size="small" type="dropdown" text="Dropdown"
+            iconright="chevrondown" noloader nodisable></aph-button>
+
+        <aph-button style="margin-left: 16px;margin-top: 16px; width: calc(100% - 32px);" size="small" type="dropdown"
+            text="Dropdown" iconright="chevrondown" noloader nodisable nomargin fullwidth></aph-button>
+        <aph-button style="margin-left: 16px;margin-top: 16px; width: calc(100% - 32px);" size="small"
+            type="dropdownitem" text="Dropdown" iconright="chevrondown" noloader nodisable nomargin fullwidth>
+        </aph-button>
+
+        <aph-dropdown style="position: relative; margin-left: 16px; margin-top: 16px;"
+            default="{&#34;text&#34;:&#34;Production Live&#34;,&#34;data&#34;:&#34;productionLive&#34;}"
+            items="[[{&#34;type&#34;:&#34;danger&#34;,&#34;text&#34;:&#34;Production Live&#34;,&#34;data&#34;:&#34;productionLive&#34;}],[{&#34;type&#34;:&#34;default&#34;,&#34;text&#34;:&#34;Development Live&#34;,&#34;data&#34;:&#34;developmentLive&#34;}]]">
+        </aph-dropdown>
+
+
         <aph-text-input style="margin-left: 16px; margin-top: 16px; width: 256px;">
         </aph-text-input>
     </div>
@@ -78,8 +146,8 @@
 
     document.body.appendChild(button);*/
 
-    let icon = document.getElementById('test-icon');
+    /*let icon = document.getElementById('test-icon');
     icon.setAttributes('dan', '48');
-    icon.construct();
+    icon.construct();*/
 
 </script>

@@ -20,7 +20,7 @@ aph-button {
 // #region Button Class
 
 
-.aph-button {
+aph-button button {
     display: flex;
     -webkit-appearance: none;
     position: relative;
@@ -63,6 +63,7 @@ aph-button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    white-space: nowrap;
 }
 
 .aph-button-text-active {
@@ -120,5 +121,13 @@ aph-button {
 // #region Button Types
 
 @import "./types/primary.scss";
+@import "./types/secondary.scss";
+@import "./types/tertiary.scss";
+@import "./types/ghost.scss";
+@import "./types/danger.scss";
+@import "./types/dropdown.scss";
+@import "./types/dropdownitem.scss";
+@import "./types/dropdownitemdanger.scss";
+@import "./types/inputnumber.scss";
 
 // #endregion
