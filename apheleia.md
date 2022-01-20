@@ -3,6 +3,7 @@
 - [ApheleiaIcon](#apheleiaicon)
 - [ApheleiaButton](#apheleiabutton)
 - [ApheleiaTextInput](#apheleiatextinput) 
+- [ApheleiaNumberInput](#apheleianumberinput)
 
 # Supported Html Input Types
 
@@ -197,16 +198,16 @@
 
 ## ApheleiaTextInput Class Attributes
 
-| Attribute   | Values                                          | Default   | Description                                                                                          |
-| ----------- | ----------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------- |
-| type        | [ApheleiaTextInputType](#apheleiatextinputtype) | primary   | The input type of the text input.                                                                    |
-| size        | [ApheleiaTextInputSize](#apheleiatextinputsize) | medium    | The height of the input, with custom set a height using the HTML style attribute or CSS and a class. |
-| id          | string                                          | undefined |                                                                                                      |
-| label       | string                                          | undefined |                                                                                                      |
-| requirement | string                                          | undefined |                                                                                                      |
-| helper      | string                                          | undefined |                                                                                                      |
-| placeholder | string                                          | undefined |                                                                                                      |
-| icon        | [ApheleiaSupportedIcon](#apheleiasupportedicon) | undefined |                                                                                                      |
+| Attribute   | Values                                          | Html                 | Default   | Description                                                                                         |
+| ----------- | ----------------------------------------------- | -------------------- | --------- | --------------------------------------------------------------------------------------------------- |
+| type        | [ApheleiaTextInputType](#apheleiatextinputtype) | ```type=""```        | primary   | The input type of the text input                                                                    |
+| size        | [ApheleiaTextInputSize](#apheleiatextinputsize) | ```size=""```        | medium    | The height of the input, with custom set a height using the HTML style attribute or CSS and a class |
+| id          | string                                          | ```id=""```          | undefined |                                                                                                     |
+| label       | string                                          | ```label=""```       | undefined |                                                                                                     |
+| requirement | string                                          | ```requirement=""``` | undefined |                                                                                                     |
+| helper      | string                                          | ```helper=""```      | undefined |                                                                                                     |
+| placeholder | string                                          | ```placeholder=""``` | undefined |                                                                                                     |
+| icon        | [ApheleiaSupportedIcon](#apheleiasupportedicon) | ```icon=""```        | undefined |                                                                                                     |
 
 ## ApheleiaTextInput Class Elements
 
@@ -238,6 +239,55 @@
 - url
 
 ## ApheleiaTextInputSize
+
+- small
+- medium
+- large
+- custom
+
+# ApheleiaNumberInput
+
+```html
+<aph-number-input></aph-number-input>
+```
+
+## ApheleiaNumberInput Class Attributes
+
+| Attribute   | Values                                              | Html                 | Default                        | Description                                                                                         |
+| ----------- | --------------------------------------------------- | -------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------- |
+| size        | [ApheleiaNumberInputSize](#apheleianumberinputsize) | ```size=""```        | ApheleiaNumberInputSize.medium | The height of the input, with custom set a height using the HTML style attribute or CSS and a class |
+| id          | string                                              | ```id=""```          | undefined                      |                                                                                                     |
+| label       | string                                              | ```label=""```       | undefined                      |                                                                                                     |
+| requirement | string                                              | ```requirement=""``` | undefined                      |                                                                                                     |
+| helper      | string                                              | ```helper=""```      | undefined                      |                                                                                                     |
+| placeholder | string                                              | ```placeholder=""``` | undefined                      |                                                                                                     |
+| minimum     | number                                              | ```minimum=""```     | undefined                      |                                                                                                     |
+| maximum     | number                                              | ```maximum=""```     | undefined                      |                                                                                                     |
+| step        | number                                              | ```step=""```        | 1                              |                                                                                                     |
+| readOnly    | boolean                                             | ```readonly```       | false                          |                                                                                                     |
+
+## ApheleiaNumberInput Class Elements
+
+| Element        | Type                                                                                | Nullable           | Description |
+| -------------- | ----------------------------------------------------------------------------------- | ------------------ | ----------- |
+| input          | [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) | :white_check_mark: |             |
+| inputContainer | [HTMLDivElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)     | :white_check_mark: |             |
+| label          | [HTMLLabelElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) | :white_check_mark: |             |
+| requirement    | [HTMLSpanElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span)   | :white_check_mark: |             |
+| helper         | [HTMLSpanElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span)   | :white_check_mark: |             |
+| buttonRemove   | [ApheleiaButton](#apheleiabutton)                                                   | :white_check_mark: |             |
+| buttonAdd      | [ApheleiaButton](#apheleiabutton)                                                   | :white_check_mark: |             |
+
+## ApheleiaNumberInput Class Functions
+
+| Function        | Parameteres | Types | Nullable | Description |
+| --------------- | ----------- | ----- | -------- | ----------- |
+| updateState()   |             |       |          |             |
+| getAttributes() |             |       |          |             |
+| setAttributes() |             |       |          |             |
+| construct()     |             |       |          |             |
+
+## ApheleiaNumberInputSize
 
 - small
 - medium
