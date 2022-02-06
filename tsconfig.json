@@ -5,7 +5,7 @@
         "lib": [
             "dom"
         ],
-        "outFile": "./build/apheleia/build.js",
+        "outFile": "./build/js/apheleia.js",
         //"outDir": "./build/apheleia",
         "allowJs": true,
         "checkJs": true,

@@ -227,7 +227,10 @@ class ApheleiaNumberInput extends HTMLElement
         this.input = document.createElement('input');
         this.input.classList.add('aph-number-input');
         this.input.type = 'number';
-        this.input.id = `${this.numberInputId}-input`;
+        if (this.numberInputId)
+        {
+            this.input.id = `${this.numberInputId}-input`;
+        };
         this.input.readOnly = this.numberInputReadOnly;
         this.input.disabled = this.numberInputReadOnly;
         this.input.addEventListener('keyup', () =>

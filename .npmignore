@@ -1,0 +1,9 @@
+public
+src
+.vs
+.vscode
+.todo
+dump.txt
+tsconfig.json
+webpack.sass.development.js
+webpack.sass.production.js

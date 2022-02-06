@@ -1,0 +1,7 @@
+// #region Notification Type
+
+.aph-notification-warning {
+    @include aph-notification-type($type-color: $color-yellow-50);
+}
+
+// #endregion

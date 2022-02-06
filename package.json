@@ -1,14 +1,18 @@
 {
   "name": "apheleia-ui",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Css and Javascript Ui library.",
   "main": "index.ts",
   "scripts": {
-    "build-sass-development": "webpack --config webpack.sass.development.js",
-    "build-sass-production": "webpack --config webpack.sass.production.js",
-    "build-ts-production": "tsc --project tsconfig.json && minify-js-production",
+    "build-ts-production": "tsc --project tsconfig.json && npm run minify-js-production",
     "build-ts-development": "tsc --project tsconfig.json --watch",
-    "minify-js-production": "jsmin -o ./build/apheleia/build.min.js ./build/apheleia/build.js"
+    "minify-js-production": "jsmin -o ./build/js/apheleia.min.js ./build/js/apheleia.min.js",
+    "build-sass-expanded-production": "sass ./src/import.scss ./build/css/apheleia.min.css --style=compressed",
+    "build-sass-minified-production": "sass ./src/import.scss ./build/css/apheleia.css --style=expanded",
+    "build-sass-production": "npm run build-sass-expanded-production && npm run build-sass-minified-production",
+    "build-sass-expanded-development": "sass ./src/import.scss ./build/css/apheleia.min.css --style=compressed --watch",
+    "build-sass-minified-development": "sass ./src/import.scss ./build/css/apheleia.css --style=expanded --watch",
+    "build-sass-development": "concurrently \"npm run build-sass-expanded-development\" \"npm run build-sass-minified-development\""
   },
   "author": {
     "name": "NightFoxDev",
@@ -19,6 +23,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "css-loader": "^5.2.5",
     "file-loader": "^6.2.0",
     "filemanager-webpack-plugin": "^6.1.4",

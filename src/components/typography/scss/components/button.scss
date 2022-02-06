@@ -1,0 +1,17 @@
+.aph-type-button {
+    @extend .aph-type-all;
+
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+    display: block;
+    pointer-events: none;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

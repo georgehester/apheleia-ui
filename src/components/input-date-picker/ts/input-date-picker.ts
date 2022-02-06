@@ -249,7 +249,10 @@ class ApheleiaDateInput extends HTMLElement
         */
         this.input = document.createElement('input');
         this.input.classList.add('aph-date-input');
-        this.input.id = `${this.dateInputId}-input`;
+        if (this.dateInputId)
+        {
+            this.input.id = `${this.dateInputId}-input`;
+        };
         this.input.readOnly = this.dateInputReadOnly;
         this.input.disabled = this.dateInputReadOnly;
         this.input.addEventListener('input', () =>

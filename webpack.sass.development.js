@@ -20,11 +20,11 @@ module.exports = {
     watch: true,
     entry: {
         apheleia: sassFiles
-    },
+    },/*
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: '[name].build.js'
-    },
+    },*/
     module: {
         rules: [
             {
@@ -34,13 +34,13 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
-            },
+            }/*,
             {
                 test: /\.tsx?$/i,
                 use: {
                     loader: 'ts-loader'
                 }
-            }
+            }*/
         ]
     },
     plugins: [
@@ -58,6 +58,6 @@ module.exports = {
         })*/
     ],
     resolve: {
-        extensions: ['.scss', '.ts', '.js']
+        extensions: ['.scss'/*, '.ts', '.js'*/]
     }
 };

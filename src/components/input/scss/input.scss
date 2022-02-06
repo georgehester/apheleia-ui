@@ -1,0 +1,91 @@
+// #region Input
+
+.aph-input {
+    @extend .aph-type-input;
+
+    background-color: $color-light-gray-04;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.25rem;
+    outline: none;
+    border-color: transparent;
+    border-width: 0.125rem;
+    border-style: solid;
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-color 0.125s, background-color 0.125s;
+    cursor: text;
+
+    &::placeholder {
+        color: $color-dark-gray-10;
+    }
+
+    &:hover {
+        border-color: $color-light-gray-06;
+    }
+
+    &:focus {
+        border-color: $color-blue-50;
+        background-color: transparent;
+    }
+
+    &:disabled {
+        background-color: $color-light-gray-05;
+        cursor: default;
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+
+    &:invalid {
+        border-color: $color-yellow-50;
+    }
+}
+
+// #endregion
+// #region Input Error
+
+.aph-input-error {
+    border-color: $color-red-40;
+
+    &:hover {
+        border-color: $color-red-40;
+    }
+
+    &:focus {
+        border-color: $color-blue-40;
+        background-color: transparent;
+    }
+
+    &:disabled {
+        background-color: $color-light-gray-05;
+        border-color: transparent;
+        cursor: default;
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+}
+
+// #endregion
+// #region Input Sizes
+
+@import "./sizes/small.scss";
+@import "./sizes/medium.scss";
+@import "./sizes/large.scss";
+
+// #endregion
+// #region Input Components
+
+@import "./components/container.scss";
+@import "./components/label.scss";
+@import "./components/helper.scss";
+@import "./components/requirement.scss";
+
+// #endregion
