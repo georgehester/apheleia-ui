@@ -1,0 +1,53 @@
+// #region Basic Webcomponent Properties
+
+aph-notification {
+    position: relative;
+}
+
+// #endregion
+// #region Notification
+
+.aph-notification {
+    width: 100%;
+    height: fit-content;
+    margin-top: 0.5rem;
+    border-radius: 0.24rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 0.125rem 0.125rem 0.125rem 0.375rem;
+    border-style: solid;
+
+    aph-icon {
+        margin-left: 0.625rem;
+    }
+
+    span {
+        @extend .aph-type-notification;
+
+        margin: 0.5rem;
+    }
+}
+
+// #endregion
+// #region Notification Types Function
+
+@mixin aph-notification-type($type-color: $color-blue-50) {
+    border-color: $type-color;
+    background-color: rgba($color: $type-color, $alpha: 0.1);
+
+    aph-icon {
+        fill: $type-color;
+    }
+}
+
+// #endregion
+// #region Notification Types
+
+@import "./types/error.scss";
+@import "./types/info.scss";
+@import "./types/success.scss";
+@import "./types/warning.scss";
+
+// #endregion

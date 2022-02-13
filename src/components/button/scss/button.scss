@@ -19,7 +19,6 @@ aph-button {
 
 // #region Button Class
 
-
 aph-button button {
     display: flex;
     -webkit-appearance: none;
@@ -28,12 +27,16 @@ aph-button button {
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     outline: none;
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
 }
+
+// #endregion
+
+// #region Button Icon
 
 .aph-button-icon {
     opacity: 0;
@@ -43,27 +46,14 @@ aph-button button {
     opacity: 1;
 }
 
-
-
-
 // #endregion
 
 // #region Button Text
 
 .aph-button-text {
-    @extend .aph-type-body-short-01;
+    @extend .aph-type-button;
 
-    text-align: start;
-    display: block;
     opacity: 0;
-    pointer-events: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    white-space: nowrap;
 }
 
 .aph-button-text-active {
@@ -84,14 +74,14 @@ aph-button button {
     width: 16px;
     height: 16px;
     display: block;
-    opacity: 0;
     pointer-events: none;
+    touch-action: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-    -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    opacity: 0;
 }
 
 .aph-button-loader-active {

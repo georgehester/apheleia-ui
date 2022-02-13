@@ -3,10 +3,10 @@
 @import "./components/color/scss/color.scss";
 
 // #endregion
-
 // #region Import Components
 
 @import "./components/typography/scss/typography.scss";
+@import "./components/input/scss/input.scss";
 @import "./components/icon/scss/icon.scss";
 @import "./components/button/scss/button.scss";
 @import "./components/input-text/scss/input-text.scss";
@@ -14,29 +14,20 @@
 @import "./components/dropdown/scss/dropdown.scss";
 @import "./components/table/scss/table.scss";
 @import "./components/input-date-picker/scss/input-date-picker.scss";
+@import "./components/notification/scss/notification.scss";
+@import "./components/modal/scss/modal.scss";
 
 // #endregion
-
 // #region Default Css
 
 html {
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
 }
 
 body {
     margin: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: $color-light-ui-background;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: $color-dark-ui-background;
-    }
+    background-color: $color-light-ui-background;
 }
 
 // #endregion

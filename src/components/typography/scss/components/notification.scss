@@ -1,0 +1,14 @@
+// #region Type For Notification
+
+.aph-type-notification {
+    @extend .aph-type-all;
+
+    color: $color-dark-gray-02;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    font-weight: 600;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion

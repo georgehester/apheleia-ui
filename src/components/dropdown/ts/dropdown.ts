@@ -80,7 +80,7 @@ class ApheleiaDropdown extends HTMLElement
                 {
                     this.dropdown.style.left = '0px';
                 };
-                
+
                 /*
                     Check if dropdown will overflow window
                 */
@@ -101,6 +101,22 @@ class ApheleiaDropdown extends HTMLElement
     */
     private dropdownItemClicked(item: ApheleiaDropdownDefaultItem): void
     {
+        /*
+            Create custom event 
+        */
+        let itemSelectedEvent = new CustomEvent('itemselected',
+            {
+                detail: {
+                    text: item.text,
+                    data: item.data
+                }
+            });
+
+        /*
+            Dispatch event
+        */
+        this.dispatchEvent(itemSelectedEvent);
+
         /*
             Update current item
         */
@@ -191,7 +207,7 @@ class ApheleiaDropdown extends HTMLElement
         {
             if (this.dropdownDefaultItem)
             {
-                this.dropdownCurrentItem = this.dropdownCurrentItem;
+                this.dropdownCurrentItem = this.dropdownDefaultItem;
                 this.button.setAttributes(ApheleiaButtonType.dropdown, ApheleiaButtonSize.small, this.dropdownDefaultItem.text, undefined, undefined, this.dropdownIcon, false, false, true, false, false);
             }
             else 

@@ -1,0 +1,18 @@
+// #region Input Helper
+
+.aph-input-helper {
+    @extend .aph-type-input-helper;
+
+    margin-top: 4px;
+}
+
+// #endregion
+// #region Input Helper Error
+
+.aph-input-helper-error {
+    @extend .aph-type-input-helper-error;
+
+    margin-top: 4px;
+}
+
+// #endregion

@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        //"module": "None",
+        "target": "ES6",
+        "module": "AMD",
         "lib": [
-            "dom"
+            "DOM"
         ],
-        "outFile": "./build/apheleia/build.js",
-        //"outDir": "./build/apheleia",
+        "outFile": "./build/js/apheleia.js",
         "allowJs": true,
         "checkJs": true,
         "declaration": true,
         "sourceMap": true,
+        "declarationMap": true,
         "removeComments": true,
         "strict": true,
         "noImplicitAny": true,
@@ -19,12 +19,11 @@
         "strictPropertyInitialization": true,
         "noImplicitThis": true,
         "alwaysStrict": true,
-        //"noUnusedParameters": true,
+        "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        //"moduleResolution": "classic",
+        "moduleResolution": "classic",
         "allowUnreachableCode": false
-        //"reorderFiles": true
     },
     "include": [
         "./src/**/*.ts"

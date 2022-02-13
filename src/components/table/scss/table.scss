@@ -1,4 +1,11 @@
-$table-border-radius: 8px;
+// #region Table Configuration
+
+$table-border-radius: 0.25rem;
+$table-td-padding: 0.75rem;
+$table-th-padding: 0.75rem;
+
+// #endregion
+// #region Basic Webcomponent Properties
 
 aph-table {
     display: block;
@@ -6,80 +13,69 @@ aph-table {
     height: fit-content;
 }
 
+// #endregion
+// #region Table
+
 aph-table table {
     width: 100%;
     background-color: $color-light-gray-01;
     border-collapse: collapse;
     border-radius: $table-border-radius;
-    -moz-border-radius: $table-border-radius;
 }
 
-aph-table tbody tr {
-    border-bottom: 2px solid $color-light-gray-02;
+// #endregion
+// #region Table Body Row
+
+aph-table table tbody tr {
+    border-width: 0 0 0.125rem 0;
+    border-style: solid;
+    border-color: $color-light-gray-02;
 
     &:last-child {
         border: none;
+
+        td:first-child {
+            border-radius: 0 0 0 $table-border-radius;
+        }
+
+        td:last-child {
+            border-radius: 0 0 $table-border-radius 0;
+        }
+    }
+
+    td {
+        @extend .aph-type-table-data;
+
+        padding: $table-td-padding $table-td-padding * 4 $table-td-padding $table-td-padding;
+        max-width: 0;
+        overflow: hidden;
     }
 }
 
-aph-table thead tr {
+// #endregion
+// #region Table Header Row
+
+aph-table table thead tr {
     border-bottom: 2px solid $color-light-gray-02;
+
+    &:first-child {
+        th:first-child {
+            border-radius: $table-border-radius 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 $table-border-radius 0 0;
+        }
+    }
+
+    th {
+        @extend .aph-type-table-header;
+
+        background-color: $color-light-gray-03;
+        padding: $table-th-padding $table-th-padding * 4 $table-th-padding $table-th-padding;
+        max-width: 0;
+        overflow: hidden;
+    }
 }
 
-aph-table thead tr:first-child th:first-child {
-    border-radius: $table-border-radius 0 0 0;
-}
-
-aph-table thead tr:first-child th:last-child {
-    border-radius: 0 $table-border-radius 0 0;
-}
-
-aph-table tbody tr:last-child td:first-child {
-    border-radius: 0 0 0 $table-border-radius;
-}
-
-aph-table tbody tr:last-child td:last-child {
-    border-radius: 0 0 $table-border-radius 0;
-}
-
-aph-table th {
-    @extend .aph-type-all;
-
-    background-color: $color-light-gray-03;
-
-    text-align: left;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.16px;
-    font-weight: 600;
-    color: $color-text-05;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-left: 16px;
-    padding-right: 64px;
-
-    max-width: 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-aph-table td {
-    @extend .aph-type-all;
-
-    text-align: left;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.16px;
-    font-weight: 500;
-    color: $color-text-05;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    padding-left: 16px;
-    padding-right: 64px;
-
-    max-width: 0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
+// #endregion

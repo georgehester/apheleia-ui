@@ -1,3 +1,5 @@
+// #region Basic Webcomponent Properties
+
 aph-number-input {
     display: flex;
     position: relative;
@@ -5,149 +7,76 @@ aph-number-input {
     flex-direction: column;
 }
 
-aph-number-input input {
-    -moz-appearance: textfield;
-
-}
-
-aph-number-input input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-aph-number-input input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+// #endregion
+// #region Input Container
 
 .aph-number-input-container {
-    position: relative;
+    @extend .aph-input-container;
+
     display: flex;
     flex-direction: row;
 }
 
+// #endregion
+// #region Input
+
 .aph-number-input {
-    background-color: $color-light-gray-04;
-    position: relative;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 4px 0px 0px 4px;
-    outline: none;
-    border: 2px solid transparent;
-    box-sizing: border-box;
-    width: 100%;
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    font-style: normal;
-    color: $color-dark-gray-02;
-    transition: border 0.125s, background 0.125s;
-    cursor: text;
+    @extend .aph-input;
 
-    &:hover {
-        border-color: $color-light-gray-06;
-    }
-
-    &:focus {
-        border-color: $color-blue-50;
-        background-color: transparent;
-    }
-
-    &::placeholder {
-        color: $color-dark-gray-10;   
-    }
-
-    &:disabled {
-        background-color: $color-light-gray-05;
-        cursor: default;
-
-        &:hover {
-            border-color: transparent;
-        }
-    }
-
-    &:invalid {
-        border-color: $color-yellow-50;
-    }
+    appearance: textfield;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    border-radius: 0.25rem 0 0 0.25rem;
 }
 
+// #endregion
+// #region Input Error
+
+.aph-number-input-error {
+    @extend .aph-input-error;
+}
+
+// #endregion
+// #region Input Sizes
+
 .aph-number-input-size-small {
-    height: 32px;
+    @extend .aph-input-size-small;
 }
 
 .aph-number-input-size-medium {
-    height: 40px;
+    @extend .aph-input-size-medium;
 }
 
 .aph-number-input-size-large {
-    height: 48px;
+    @extend .aph-input-size-large;
 }
 
-.aph-number-input-error {
-    border-color: $color-red-40;
-
-    &:hover {
-        border-color: $color-red-40;
-    }
-
-    &:focus {
-        border-color: $color-blue-40;
-        background-color: transparent;
-    }
-
-    &:disabled {
-        background-color: $color-light-gray-05;
-        border-color: transparent;
-        cursor: default;
-
-        &:hover {
-            border-color: transparent;
-        }
-    }
-}
+// #endregion
+// #region Input Label
 
 .aph-number-input-label {
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    font-style: normal;
-    color: $color-dark-gray-02; 
-    margin-bottom: 4px;
+    @extend .aph-input-label;
 }
+
+// #endregion
+// #region Input Helper
 
 .aph-number-input-helper {
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    font-style: normal;
-    color: $color-dark-gray-07; 
-    margin-top: 4px;
+    @extend .aph-input-helper;
 }
+
+// #endregion
+// #region Input Helper Error
 
 .aph-number-input-helper-error {
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    font-style: normal;
-    color: $color-red-40;
-    margin-top: 4px;
+    @extend .aph-input-helper-error;
 }
 
+// #endregion
+// #region Input Requirement
+
 .aph-number-input-requirement {
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    font-style: normal;
-    color: $color-dark-gray-07; 
-    margin-bottom: 4px;
+    @extend .aph-input-requirement;
 }
+
+// #endregion

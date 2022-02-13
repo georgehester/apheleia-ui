@@ -1,0 +1,7 @@
+// #region Notification Type
+
+.aph-notification-success {
+    @include aph-notification-type($type-color: $color-green-50);
+}
+
+// #endregion

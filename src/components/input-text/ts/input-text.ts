@@ -262,7 +262,10 @@ class ApheleiaTextInput extends HTMLElement
         this.input = document.createElement('input');
         this.input.classList.add('aph-text-input');
         this.input.type = `${ApheleiaTextInputType[this.textInputType]}`;
-        this.input.id = `${this.textInputId}-input`;
+        if (this.textInputId)
+        {
+            this.input.id = `${this.textInputId}-input`;
+        };
         this.input.addEventListener('keyup', () =>
         {
             if (this.textInputCurrentState == ApheleiaTextInputState.error)

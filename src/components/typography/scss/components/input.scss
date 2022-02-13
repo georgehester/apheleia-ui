@@ -1,0 +1,70 @@
+// #region Type For Input
+
+.aph-type-input {
+    @extend .aph-type-all;
+
+    color: $color-dark-gray-02;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion
+// #region Type For Input Label
+
+.aph-type-input-label {
+    @extend .aph-type-all;
+
+    color: $color-dark-gray-02;
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion
+// #region Type For Input Helper
+
+.aph-type-input-helper {
+    @extend .aph-type-all;
+
+    color: $color-dark-gray-07;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion
+// #region Type For Input Helper Error
+
+.aph-type-input-helper-error {
+    @extend .aph-type-all;
+
+    color: $color-red-40;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion
+// #region Type For Input Requirement
+
+.aph-type-input-requirement {
+    @extend .aph-type-all;
+
+    color: $color-dark-gray-07;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-align: start;
+    white-space: nowrap;
+}
+
+// #endregion
