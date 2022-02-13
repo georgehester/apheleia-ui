@@ -4,10 +4,53 @@
 /// <reference path="../../button/ts/button.ts" />
 
 /*
+    Modal states
+*/
+enum ApheleiaModalState
+{
+    open,
+    closed
+};
+
+/*
     Class apheleia modal
 */
 class ApheleiaModal extends HTMLElement
 {
+    /*
+        Function to update modal state
+    */
+    updateState(state: ApheleiaModalState): void
+    {
+        let bodies: HTMLCollectionOf<HTMLBodyElement> = document.getElementsByTagName('body');
+
+        switch (state)
+        {
+            case ApheleiaModalState.open:
+                /*
+                    Make body unscrollable
+                */
+                for (let i = 0; i < bodies.length; i++)
+                {
+                    bodies[i].style.overflow = 'hidden';
+                };
+
+                this.style.display = 'block';
+                break;
+            case ApheleiaModalState.closed:
+                /*
+                    Make body scrollable
+                */
+                for (let i = 0; i < bodies.length; i++)
+                {
+                    bodies[i].style.overflow = 'auto';
+                };
+
+                this.style.display = 'none';
+                break;
+        };
+    };
+
     /*
         Function to reset modal content
     */
@@ -17,21 +60,6 @@ class ApheleiaModal extends HTMLElement
             Reset inner html
         */
         this.innerHTML = '';
-
-        /*
-            Make body scrollable
-        */
-        let bodies = document.getElementsByTagName('body');
-
-        for (let i = 0; i < bodies.length; i++)
-        {
-            bodies[i].style.overflow = 'auto';
-        };
-
-        /*
-            Hide current element
-        */
-        this.style.display = 'none';
     };
 
     /*
@@ -68,14 +96,15 @@ class ApheleiaModal extends HTMLElement
             this.hasAttribute('noactions') ? false : true,
             ApheleiaButtonType[<keyof typeof ApheleiaButtonType>this.getAttribute('submittype')] || undefined,
             this.getAttribute('submittext') || undefined,
-            this.innerHTML
+            this.innerHTML,
+            this.hasAttribute('noautoopen') ? false : true
         );
     };
 
     /*
         Class set attributes function
     */
-    setAttributes(headerText?: string, hasCloseButton?: boolean, hasActionButtons?: boolean, submitButtonType?: ApheleiaButtonType, submitButtonText?: string, content?: string): void
+    setAttributes(headerText?: string, hasCloseButton?: boolean, hasActionButtons?: boolean, submitButtonType?: ApheleiaButtonType, submitButtonText?: string, content?: string, autoOpen?: boolean): void
     {
         this.modalHeaderText = undefined;
         this.modalHasCloseButton = true;
@@ -83,6 +112,7 @@ class ApheleiaModal extends HTMLElement
         this.modalSubmitButtonType = ApheleiaButtonType.primary;
         this.modalSubmitButtonText = 'Submit';
         this.modalContent = undefined;
+        this.modalAutoOpen = true;
 
         if (headerText)
         {
@@ -113,6 +143,11 @@ class ApheleiaModal extends HTMLElement
         {
             this.modalContent = content;
         };
+
+        if (autoOpen != undefined)
+        {
+            this.modalAutoOpen = autoOpen;
+        };
     };
 
     /*
@@ -124,11 +159,6 @@ class ApheleiaModal extends HTMLElement
             Reset inner html
         */
         this.innerHTML = '';
-
-        /*
-            Reset display style
-        */
-        this.style.display = 'block';
 
         /*
             Generate modal element
@@ -213,27 +243,12 @@ class ApheleiaModal extends HTMLElement
         };
 
         /*
-            Make body unscrollable
+            Set modal to be open if required
         */
-        let bodies = document.getElementsByTagName('body');
-
-        for (let i = 0; i < bodies.length; i++)
+        if (this.modalAutoOpen)
         {
-            bodies[i].style.overflow = 'hidden';
+            this.updateState(ApheleiaModalState.open);
         };
-
-        /*
-            Add event listener for modal surround clicked
-        */
-        window.addEventListener('click', (event) =>
-        {
-            if (this.modalModal.getBoundingClientRect().left < event.x && this.modalModal.getBoundingClientRect().right > event.x && this.modalModal.getBoundingClientRect().top < event.y && this.modalModal.getBoundingClientRect().bottom > event.y)
-            {
-                return;
-            };
-
-            this.resetModal();
-        });
     };
 
     /*
@@ -246,6 +261,7 @@ class ApheleiaModal extends HTMLElement
     modalSubmitButtonText: string = 'Submit';
     modalContent?: string;
     modalSubmitButtonData?: Object;
+    modalAutoOpen: boolean = true;
 
     /*
         Class elements
@@ -266,6 +282,19 @@ class ApheleiaModal extends HTMLElement
         super();
         this.getAttributes();
         this.construct();
+
+        /*
+            Add event listener for modal surround clicked
+        */
+        window.addEventListener('click', (event) =>
+        {
+            if (this.modalModal.getBoundingClientRect().left < event.x && this.modalModal.getBoundingClientRect().right > event.x && this.modalModal.getBoundingClientRect().top < event.y && this.modalModal.getBoundingClientRect().bottom > event.y)
+            {
+                return;
+            };
+
+            this.updateState(ApheleiaModalState.closed);
+        });
     };
 };
 

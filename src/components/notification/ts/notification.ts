@@ -32,6 +32,9 @@ class ApheleiaNotification extends HTMLElement
     */
     createNotification(type?: ApheleiaNotificationType, text?: string, timeout?: number): void
     {
+        /*
+            Get the correct notification type
+        */
         switch (type)
         {
             case ApheleiaNotificationType.info:
@@ -52,15 +55,27 @@ class ApheleiaNotification extends HTMLElement
                 break;
         };
 
+        /*
+            Create notificaiton elment
+        */
         this.notification = document.createElement('div');
         this.notification.className = `aph-notification aph-notification-${ApheleiaNotificationType[type]}`;
 
+        /*
+            Create notification icon
+        */
         this.icon = new ApheleiaIcon();
         this.icon.setAttributes(this.notificationIcon, 16);
         this.icon.construct();
 
+        /*
+            Create notification text
+        */
         this.text = document.createElement('span');
 
+        /*
+            Add text if required
+        */
         if (text)
         {
             this.text.innerHTML = text;
@@ -68,9 +83,11 @@ class ApheleiaNotification extends HTMLElement
 
         this.notification.appendChild(this.icon);
         this.notification.appendChild(this.text);
-
         this.appendChild(this.notification);
 
+        /*
+            Delete after timeout if required
+        */
         if (timeout)
         {
             setTimeout(this.removeNotification, timeout, this.notification);
